@@ -1,0 +1,359 @@
+{
+  "_comment": "Function words: pronouns, prepositions, conjunctions, particles. Loaded first so that when a surface form is claimed by two lemmas (Czech has many), the commoner word wins the index.",
+  "lemmas": {
+    "být": {
+      "translation": "to be",
+      "phonetic": "beet",
+      "ipa": "bɪːt",
+      "pos": "verb",
+      "note": "The most irregular verb in Czech. The past tense is formed with these present forms plus the -l participle: byl jsem = I was.",
+      "forms": {
+        "present": { "já": "jsem", "ty": "jsi", "on/ona/ono": "je", "my": "jsme", "vy": "jste", "oni": "jsou" },
+        "past": { "m": "byl", "f": "byla", "n": "bylo", "pl": "byli" },
+        "future": { "já": "budu", "ty": "budeš", "on/ona/ono": "bude", "my": "budeme", "vy": "budete", "oni": "budou" },
+        "negative": { "on/ona/ono": "není", "past m": "nebyl", "past n": "nebylo", "future": "nebude", "future my": "nebudeme" },
+        "conditional": { "já": "bych", "ty": "bys", "on/ona/ono": "by", "my": "bychom", "vy": "byste", "oni": "by" }
+      },
+      "extra": ["byly", "jsem", "nebyly", "nebyla"]
+    },
+    "mít": {
+      "translation": "to have",
+      "phonetic": "meet",
+      "ipa": "miːt",
+      "pos": "verb",
+      "note": "Also used for obligation: mám jít = I am supposed to go.",
+      "forms": {
+        "present": { "já": "mám", "ty": "máš", "on/ona/ono": "má", "my": "máme", "vy": "máte", "oni": "mají" },
+        "past": { "m": "měl", "f": "měla", "n": "mělo", "pl": "měli" },
+        "negative": { "já": "nemám", "on/ona/ono": "nemá", "my": "nemáme", "past m": "neměl" }
+      }
+    },
+
+    "já": {
+      "translation": "I",
+      "phonetic": "yaa",
+      "ipa": "jaː",
+      "pos": "pronoun",
+      "forms": {
+        "sg": { "nom": "já", "gen": "mě", "dat": "mi", "acc": "mě", "voc": "—", "loc": "mně", "ins": "mnou" }
+      },
+      "extra": ["mne", "mně"]
+    },
+    "ty": {
+      "translation": "you (one person, informal)",
+      "phonetic": "ti",
+      "ipa": "tɪ",
+      "pos": "pronoun",
+      "forms": {
+        "sg": { "nom": "ty", "gen": "tebe", "dat": "ti", "acc": "tě", "voc": "—", "loc": "tobě", "ins": "tebou" }
+      }
+    },
+    "on": {
+      "translation": "he, it",
+      "phonetic": "on",
+      "ipa": "ɔn",
+      "pos": "pronoun",
+      "note": "After a preposition the forms take an n-: pro něj, o něm, s ním.",
+      "forms": {
+        "sg": { "nom": "on", "gen": "jeho", "dat": "mu", "acc": "ho", "voc": "—", "loc": "něm", "ins": "ním" }
+      },
+      "extra": ["jemu", "něj", "něho", "jej"]
+    },
+    "ona": {
+      "translation": "she",
+      "phonetic": "O-na",
+      "ipa": "ɔna",
+      "pos": "pronoun",
+      "forms": {
+        "sg": { "nom": "ona", "gen": "jí", "dat": "jí", "acc": "ji", "voc": "—", "loc": "ní", "ins": "ní" }
+      },
+      "extra": ["ni", "ně"]
+    },
+    "ono": {
+      "translation": "it",
+      "phonetic": "O-no",
+      "ipa": "ɔnɔ",
+      "pos": "pronoun",
+      "forms": { "sg": { "nom": "ono", "acc": "to" } }
+    },
+    "my": {
+      "translation": "we",
+      "phonetic": "mi",
+      "ipa": "mɪ",
+      "pos": "pronoun",
+      "forms": {
+        "pl": { "nom": "my", "gen": "nás", "dat": "nám", "acc": "nás", "voc": "—", "loc": "nás", "ins": "námi" }
+      }
+    },
+    "vy": {
+      "translation": "you (plural, or one person politely)",
+      "phonetic": "vi",
+      "ipa": "vɪ",
+      "pos": "pronoun",
+      "forms": {
+        "pl": { "nom": "vy", "gen": "vás", "dat": "vám", "acc": "vás", "voc": "—", "loc": "vás", "ins": "vámi" }
+      }
+    },
+    "oni": {
+      "translation": "they",
+      "phonetic": "O-ni",
+      "ipa": "ɔɲɪ",
+      "pos": "pronoun",
+      "forms": {
+        "pl": { "nom": "oni", "gen": "jich", "dat": "jim", "acc": "je", "voc": "—", "loc": "nich", "ins": "jimi" }
+      },
+      "extra": ["ony", "nimi", "ně"]
+    },
+
+    "se": {
+      "translation": "oneself (reflexive)",
+      "phonetic": "seh",
+      "ipa": "sɛ",
+      "pos": "pronoun",
+      "note": "Attaches to reflexive verbs: dívat se = to look. It always sits in second position in the clause.",
+      "forms": { "sg": { "acc": "se", "dat": "si" } }
+    },
+
+    "můj": {
+      "translation": "my, mine",
+      "phonetic": "mooy",
+      "ipa": "muːj",
+      "pos": "pronoun",
+      "forms": {
+        "sg": { "nom": "můj", "gen": "mého", "dat": "mému", "acc": "můj", "voc": "můj", "loc": "mém", "ins": "mým" },
+        "pl": { "nom": "moji", "gen": "mých", "dat": "mým", "acc": "mé", "voc": "moji", "loc": "mých", "ins": "mými" }
+      },
+      "extra": ["moje", "má", "mou"]
+    },
+    "tvůj": {
+      "translation": "your, yours (informal)",
+      "phonetic": "tvooy",
+      "ipa": "tvuːj",
+      "pos": "pronoun",
+      "forms": {
+        "sg": { "nom": "tvůj", "gen": "tvého", "dat": "tvému", "acc": "tvůj", "voc": "tvůj", "loc": "tvém", "ins": "tvým" }
+      },
+      "extra": ["tvoje", "tvá", "tvou"]
+    },
+    "jeho": {
+      "translation": "his, its",
+      "phonetic": "YE-ho",
+      "ipa": "jɛɦɔ",
+      "pos": "pronoun",
+      "note": "Never changes its ending, whatever the case of the noun.",
+      "forms": { "sg": { "nom": "jeho" } }
+    },
+    "její": {
+      "translation": "her, hers",
+      "phonetic": "YE-yee",
+      "ipa": "jɛjiː",
+      "pos": "pronoun",
+      "forms": {
+        "sg": { "nom": "její", "gen": "jejího", "dat": "jejímu", "acc": "její", "voc": "její", "loc": "jejím", "ins": "jejím" },
+        "pl": { "nom": "její", "gen": "jejích", "dat": "jejím", "acc": "její", "voc": "její", "loc": "jejích", "ins": "jejími" }
+      }
+    },
+    "náš": {
+      "translation": "our, ours",
+      "phonetic": "naash",
+      "ipa": "naːʃ",
+      "pos": "pronoun",
+      "forms": {
+        "sg": { "nom": "náš", "gen": "našeho", "dat": "našemu", "acc": "náš", "voc": "náš", "loc": "našem", "ins": "naším" },
+        "pl": { "nom": "naši", "gen": "našich", "dat": "našim", "acc": "naše", "voc": "naši", "loc": "našich", "ins": "našimi" }
+      },
+      "extra": ["naše", "naši"]
+    },
+    "váš": {
+      "translation": "your, yours (plural or polite)",
+      "phonetic": "vaash",
+      "ipa": "vaːʃ",
+      "pos": "pronoun",
+      "forms": {
+        "sg": { "nom": "váš", "gen": "vašeho", "dat": "vašemu", "acc": "váš", "voc": "váš", "loc": "vašem", "ins": "vaším" }
+      },
+      "extra": ["vaše", "vaši"]
+    },
+    "svůj": {
+      "translation": "one's own",
+      "phonetic": "svooy",
+      "ipa": "svuːj",
+      "pos": "pronoun",
+      "note": "Used when the owner is the subject of the sentence. 'Jede svým autem' = he drives HIS OWN car; 'jeho autem' would mean someone else's.",
+      "forms": {
+        "sg": { "nom": "svůj", "gen": "svého", "dat": "svému", "acc": "svůj", "voc": "svůj", "loc": "svém", "ins": "svým" },
+        "pl": { "nom": "svoji", "gen": "svých", "dat": "svým", "acc": "své", "voc": "svoji", "loc": "svých", "ins": "svými" }
+      },
+      "extra": ["svoje", "svá", "svou"]
+    },
+
+    "ten": {
+      "translation": "that, the",
+      "phonetic": "ten",
+      "ipa": "tɛn",
+      "pos": "pronoun",
+      "note": "Czech has no articles; ten/ta/to does the pointing when it matters.",
+      "forms": {
+        "sg": { "nom": "ten", "gen": "toho", "dat": "tomu", "acc": "ten", "voc": "ten", "loc": "tom", "ins": "tím" },
+        "pl": { "nom": "ti", "gen": "těch", "dat": "těm", "acc": "ty", "voc": "ti", "loc": "těch", "ins": "těmi" }
+      },
+      "extra": ["ta", "to", "tu", "té", "tě", "tomto", "tato"]
+    },
+    "toto": {
+      "translation": "this",
+      "phonetic": "TO-to",
+      "ipa": "tɔtɔ",
+      "pos": "pronoun",
+      "forms": { "sg": { "nom": "toto", "acc": "toto" } },
+      "extra": ["tento", "tahle"]
+    },
+    "kdo": {
+      "translation": "who",
+      "phonetic": "gdo",
+      "ipa": "ɡdɔ",
+      "pos": "pronoun",
+      "forms": {
+        "sg": { "nom": "kdo", "gen": "koho", "dat": "komu", "acc": "koho", "loc": "kom", "ins": "kým" }
+      }
+    },
+    "co": {
+      "translation": "what",
+      "phonetic": "tso",
+      "ipa": "tsɔ",
+      "pos": "pronoun",
+      "note": "Also does duty as 'that, which' in relative clauses: všechno, co víš = everything that you know.",
+      "forms": {
+        "sg": { "nom": "co", "gen": "čeho", "dat": "čemu", "acc": "co", "loc": "čem", "ins": "čím" }
+      }
+    },
+    "který": {
+      "translation": "which, who (relative)",
+      "phonetic": "KTE-ree",
+      "ipa": "ktɛriː",
+      "pos": "pronoun",
+      "note": "Agrees with the noun it refers back to, but takes its case from its own clause.",
+      "forms": {
+        "sg": { "nom": "který", "gen": "kterého", "dat": "kterému", "acc": "který", "loc": "kterém", "ins": "kterým" },
+        "pl": { "nom": "kteří", "gen": "kterých", "dat": "kterým", "acc": "které", "loc": "kterých", "ins": "kterými" }
+      },
+      "extra": ["která", "které", "kterou"]
+    },
+    "jaký": {
+      "translation": "what kind of",
+      "phonetic": "YA-kee",
+      "ipa": "jakiː",
+      "pos": "pronoun",
+      "forms": {
+        "sg": { "nom": "jaký", "gen": "jakého", "dat": "jakému", "acc": "jaký", "loc": "jakém", "ins": "jakým" }
+      },
+      "extra": ["jaká", "jaké", "jakou"]
+    },
+    "někdo": {
+      "translation": "somebody, anybody",
+      "phonetic": "NYEG-do",
+      "ipa": "ɲɛɡdɔ",
+      "pos": "pronoun",
+      "forms": {
+        "sg": { "nom": "někdo", "gen": "někoho", "dat": "někomu", "acc": "někoho", "loc": "někom", "ins": "někým" }
+      }
+    },
+    "nikdo": {
+      "translation": "nobody",
+      "phonetic": "NIG-do",
+      "ipa": "ɲɪɡdɔ",
+      "pos": "pronoun",
+      "note": "Czech doubles its negatives: nikdo nepřišel = nobody came (literally 'nobody didn't come').",
+      "forms": {
+        "sg": { "nom": "nikdo", "gen": "nikoho", "dat": "nikomu", "acc": "nikoho", "loc": "nikom", "ins": "nikým" }
+      }
+    },
+    "nic": {
+      "translation": "nothing",
+      "phonetic": "nits",
+      "ipa": "ɲɪts",
+      "pos": "pronoun",
+      "forms": { "sg": { "nom": "nic", "gen": "ničeho", "dat": "ničemu", "acc": "nic" } }
+    },
+    "všechno": {
+      "translation": "everything, all",
+      "phonetic": "FSHEKH-no",
+      "ipa": "fʃɛxnɔ",
+      "pos": "pronoun",
+      "forms": {
+        "sg": { "nom": "všechno", "gen": "všeho", "dat": "všemu", "acc": "všechno", "loc": "všem", "ins": "vším" },
+        "pl": { "nom": "všichni", "gen": "všech", "dat": "všem", "acc": "všechny", "loc": "všech", "ins": "všemi" }
+      },
+      "extra": ["všechna", "všechny", "vše"]
+    },
+    "sám": {
+      "translation": "alone, oneself",
+      "phonetic": "saam",
+      "ipa": "saːm",
+      "pos": "pronoun",
+      "forms": { "sg": { "nom": "sám", "f": "sama", "n": "samo" } },
+      "extra": ["samý", "samá", "samé", "samou"]
+    },
+
+    "a": { "translation": "and", "phonetic": "a", "ipa": "a", "pos": "conjunction" },
+    "ale": { "translation": "but", "phonetic": "A-le", "ipa": "alɛ", "pos": "conjunction" },
+    "nebo": { "translation": "or", "phonetic": "NE-bo", "ipa": "nɛbɔ", "pos": "conjunction" },
+    "že": { "translation": "that (introducing a clause)", "phonetic": "zhe", "ipa": "ʒɛ", "pos": "conjunction" },
+    "protože": { "translation": "because", "phonetic": "PRO-to-zhe", "ipa": "prɔtɔʒɛ", "pos": "conjunction" },
+    "když": { "translation": "when, if", "phonetic": "gdizh", "ipa": "ɡdɪʃ", "pos": "conjunction" },
+    "aby": {
+      "translation": "so that, in order to",
+      "phonetic": "A-bi",
+      "ipa": "abɪ",
+      "pos": "conjunction",
+      "note": "Takes the conditional endings: abych, abys, aby, abychom, abyste, aby.",
+      "extra": ["abych", "abys", "abychom", "abyste"]
+    },
+    "kdyby": {
+      "translation": "if (hypothetically)",
+      "phonetic": "GDI-bi",
+      "ipa": "ɡdɪbɪ",
+      "pos": "conjunction",
+      "note": "For unreal conditions, with the same personal endings: kdybych, kdybys, kdyby, kdybychom.",
+      "extra": ["kdybych", "kdybys", "kdybychom", "kdybyste"]
+    },
+    "než": { "translation": "than, before", "phonetic": "nezh", "ipa": "nɛʃ", "pos": "conjunction" },
+    "i": { "translation": "even, and also", "phonetic": "ee", "ipa": "ɪ", "pos": "conjunction" },
+    "ani": { "translation": "not even, nor", "phonetic": "A-ni", "ipa": "aɲɪ", "pos": "conjunction" },
+    "jestli": { "translation": "whether, if", "phonetic": "YEST-li", "ipa": "jɛstlɪ", "pos": "conjunction" },
+
+    "v": { "translation": "in, at", "phonetic": "v", "ipa": "v", "pos": "preposition", "note": "Takes the locative for place (v Praze) and the accusative for time (v pondělí). Becomes 've' before awkward consonant clusters.", "extra": ["ve"] },
+    "na": { "translation": "on, to, for", "phonetic": "na", "ipa": "na", "pos": "preposition", "note": "Locative for position (na stole), accusative for motion (na most)." },
+    "do": { "translation": "into, to, until", "phonetic": "do", "ipa": "dɔ", "pos": "preposition", "note": "Always followed by the genitive." },
+    "z": { "translation": "from, out of", "phonetic": "z", "ipa": "z", "pos": "preposition", "note": "Genitive. Becomes 'ze' before difficult clusters.", "extra": ["ze"] },
+    "k": { "translation": "to, towards", "phonetic": "k", "ipa": "k", "pos": "preposition", "note": "Always dative. Becomes 'ke' or 'ku' before clusters.", "extra": ["ke", "ku"] },
+    "o": { "translation": "about, concerning", "phonetic": "o", "ipa": "ɔ", "pos": "preposition", "note": "Locative when it means 'about'." },
+    "s": { "translation": "with", "phonetic": "s", "ipa": "s", "pos": "preposition", "note": "Always instrumental. Becomes 'se' before s, z, š, ž.", "extra": ["se"] },
+    "u": { "translation": "at, near, at the house of", "phonetic": "oo", "ipa": "u", "pos": "preposition", "note": "Genitive. 'U doktora' = at the doctor's." },
+    "od": { "translation": "from, since", "phonetic": "od", "ipa": "ɔt", "pos": "preposition", "extra": ["ode"] },
+    "po": { "translation": "after, along", "phonetic": "po", "ipa": "pɔ", "pos": "preposition" },
+    "před": { "translation": "in front of, before, ago", "phonetic": "przhed", "ipa": "pr̝ɛt", "pos": "preposition", "extra": ["přede"] },
+    "za": { "translation": "behind, in (time), for", "phonetic": "za", "ipa": "za", "pos": "preposition", "note": "'Za dvacet minut' = in twenty minutes' time." },
+    "mezi": { "translation": "between, among", "phonetic": "ME-zi", "ipa": "mɛzɪ", "pos": "preposition" },
+    "bez": { "translation": "without", "phonetic": "bez", "ipa": "bɛs", "pos": "preposition", "note": "Always genitive." },
+    "pro": { "translation": "for", "phonetic": "pro", "ipa": "prɔ", "pos": "preposition", "note": "Always accusative." },
+    "vedle": { "translation": "next to, beside", "phonetic": "VED-le", "ipa": "vɛdlɛ", "pos": "preposition" },
+    "nedaleko": { "translation": "not far from", "phonetic": "NE-da-le-ko", "ipa": "nɛdalɛkɔ", "pos": "preposition" },
+    "podle": { "translation": "according to, along", "phonetic": "POD-le", "ipa": "pɔdlɛ", "pos": "preposition" },
+    "kolem": { "translation": "around, past", "phonetic": "KO-lem", "ipa": "kɔlɛm", "pos": "preposition" },
+
+    "ne": { "translation": "no", "phonetic": "ne", "ipa": "nɛ", "pos": "particle" },
+    "ano": { "translation": "yes", "phonetic": "A-no", "ipa": "anɔ", "pos": "particle" },
+    "prý": { "translation": "apparently, they say", "phonetic": "pree", "ipa": "priː", "pos": "particle", "note": "Marks second-hand information — very common in Czech storytelling." },
+    "asi": { "translation": "about, probably", "phonetic": "A-si", "ipa": "asɪ", "pos": "particle" },
+    "jen": { "translation": "only, just", "phonetic": "yen", "ipa": "jɛn", "pos": "particle", "extra": ["jenom"] },
+    "už": { "translation": "already, by now", "phonetic": "oozh", "ipa": "uʃ", "pos": "particle" },
+    "ještě": { "translation": "still, yet, another", "phonetic": "YESH-tye", "ipa": "jɛʃcɛ", "pos": "particle" },
+    "také": { "translation": "also, too", "phonetic": "TA-keh", "ipa": "takɛː", "pos": "particle", "extra": ["taky"] },
+    "možná": { "translation": "maybe, perhaps", "phonetic": "MOZH-naa", "ipa": "mɔʒnaː", "pos": "particle" },
+    "proto": { "translation": "therefore, that is why", "phonetic": "PRO-to", "ipa": "prɔtɔ", "pos": "particle" },
+    "proč": { "translation": "why", "phonetic": "proch", "ipa": "prɔtʃ", "pos": "particle" },
+    "stejně": { "translation": "anyway, all the same", "phonetic": "STAY-nye", "ipa": "stɛjɲɛ", "pos": "particle" },
+    "takhle": { "translation": "like this, as it is", "phonetic": "TAK-hle", "ipa": "takɦlɛ", "pos": "particle" },
+    "prosím": { "translation": "please, you're welcome", "phonetic": "PRO-seem", "ipa": "prɔsiːm", "pos": "particle" }
+  }
+}

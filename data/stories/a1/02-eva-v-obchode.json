@@ -1,0 +1,22 @@
+{
+  "id": "02-eva-v-obchode",
+  "title": "Eva jde do obchodu",
+  "level": "A1",
+  "grammarFocus": ["present tense", "genitive after prepositions"],
+  "sentences": [
+    { "cs": "Eva jde do obchodu, protože doma nemá jídlo.", "en": "Eva is going to the shop, because she has no food at home." },
+    { "cs": "Obchod je blízko jejího domu.", "en": "The shop is near her house." },
+    { "cs": "Nejdřív kupuje chléb, mléko a sýr.", "en": "First she buys bread, milk and cheese." },
+    { "cs": "Potom hledá ovoce a zeleninu.", "en": "Then she looks for fruit and vegetables." },
+    { "cs": "Jablka jsou dnes levná.", "en": "The apples are cheap today." },
+    { "cs": "Eva bere pět jablek a dvě rajčata.", "en": "Eva takes five apples and two tomatoes." },
+    { "cs": "Maso je drahé, ale ona ho chce.", "en": "The meat is expensive, but she wants it." },
+    { "cs": "U pokladny čeká krátkou chvíli.", "en": "At the checkout she waits a short while." },
+    { "cs": "„Dobrý den, platíte kartou?“ ptá se prodavačka.", "en": "\"Hello, are you paying by card?\" the shop assistant asks." },
+    { "cs": "„Ne, děkuji, platím hotově,“ odpovídá Eva.", "en": "\"No, thank you, I'm paying cash,\" Eva answers." },
+    { "cs": "Taška je těžká, ale Eva bydlí blízko.", "en": "The bag is heavy, but Eva lives nearby." },
+    { "cs": "Doma dává mléko do lednice.", "en": "At home she puts the milk in the fridge." },
+    { "cs": "Potom vaří večeři pro svou rodinu.", "en": "Then she cooks dinner for her family." },
+    { "cs": "Její dcera má hlad a chce jíst hned.", "en": "Her daughter is hungry and wants to eat right away." }
+  ]
+}

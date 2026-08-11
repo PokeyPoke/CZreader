@@ -1,0 +1,169 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Czech app — smoke tests</title>
+<!--
+  Interaction tests. Open http://localhost:8000/tests/smoke.html in a browser,
+  or run headlessly with tools/smoke.sh.
+
+  The app is loaded in a same-origin iframe so the tests can click real
+  elements and read real localStorage — no mocks, no test framework, and it
+  exercises the same code path a phone does.
+-->
+<style>
+  body { margin: 0; font: 13px/1.6 ui-monospace, Menlo, monospace; background: #14100E; color: #F1E7D9; }
+  #wrap { display: flex; gap: 16px; padding: 16px; align-items: flex-start; }
+  #out { white-space: pre; flex: 1; }
+  .p { color: #7FCB92; }
+  .f { color: #E4472F; font-weight: 700; }
+  h1 { font-size: 15px; margin: 0 0 10px; letter-spacing: .1em; text-transform: uppercase; }
+  iframe { width: 390px; height: 844px; border: 1px solid #3A2F27; flex: none; }
+</style>
+<div id="wrap">
+  <div>
+    <h1>Results</h1>
+    <div id="out">running…</div>
+  </div>
+  <iframe id="f" src="about:blank" title="app under test"></iframe>
+</div>
+
+<script type="module">
+const f = document.getElementById('f');
+const out = document.getElementById('out');
+const results = [];
+
+function check(ok, msg) {
+  results.push({ ok, msg });
+  out.innerHTML = results
+    .map((r) => `<span class="${r.ok ? 'p' : 'f'}">${r.ok ? 'PASS' : 'FAIL'}</span>  ${r.msg}`)
+    .join('\n');
+}
+
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+const go = async (route, ms = 1400) => { f.src = route; await wait(ms); return f.contentDocument; };
+
+/** Seed a plausible word list so the practice screens have something to show. */
+function seed() {
+  const now = Date.now();
+  const words = {};
+  const known = ['být', 'a', 'v', 'na', 'se', 'o', 'který', 'ráno', 'práce', 'dělat',
+                 'jít', 'město', 'voda', 'dům', 'den', 'velký', 'malý', 'starý', 'mít'];
+  known.forEach((l) => { words[l] = { status: 2, added: now, box: 5, due: now + 9e8 }; });
+  ['vstávat', 'restaurace', 'příběh', 'káva'].forEach((l) => {
+    words[l] = { status: 1, added: now, box: 1, due: now - 1000 };
+  });
+  localStorage.setItem('czs.words', JSON.stringify(words));
+  localStorage.setItem('czs.settings', JSON.stringify({ placementDone: true, theme: 'dark' }));
+}
+
+async function run() {
+  localStorage.clear();
+  seed();
+
+  /* ---------------------------------------------------------- the reader */
+  let d = await go('/#/story/01-michal-kuchar', 1800);
+  const words = d.querySelectorAll('.w[data-lemma]');
+  check(words.length > 80, `reader renders ${words.length} tappable words`);
+
+  const target = [...words].find((w) => w.dataset.lemma === 'vstávat');
+  check(!!target, 'the inflected form "vstává" resolves to the lemma vstávat');
+  target.click();
+  await wait(400);
+
+  check(!!d.querySelector('.sheet'), 'tapping a word opens the word panel');
+  check(d.querySelector('.word-lemma')?.textContent === 'vstávat', 'panel headword is the lemma');
+  check(/get up/.test(d.querySelector('.word-translation')?.textContent || ''), 'panel shows the translation');
+  check(/vstává/.test(d.querySelector('.word-surface')?.textContent || ''), 'panel says which form was tapped');
+  check(!!d.querySelector('.phonetic'), 'panel shows the phonetic spelling');
+
+  d.querySelector('.forms-toggle').click();
+  await wait(250);
+  check(d.querySelectorAll('.forms tr').length >= 10, 'the full conjugation table renders');
+  check(d.querySelector('.forms tr[data-match="true"] td')?.textContent === 'vstává',
+        'the tapped form is located and highlighted inside the grid');
+
+  [...d.querySelectorAll('.status-btn')].find((b) => b.textContent === 'Learning').click();
+  await wait(200);
+  check(JSON.parse(localStorage.getItem('czs.words'))['vstávat']?.status === 1,
+        'marking a word Learning persists to storage');
+  check([...d.querySelectorAll('.w[data-lemma="vstávat"]')].every((n) => n.dataset.status === '1'),
+        'every occurrence of the word repaints across the whole story');
+
+  /* -------------------------------------------- level-scaled reading aids */
+  d.querySelector('.scrim').click();
+  await wait(250);
+  const before = d.querySelectorAll('.translation').length;
+  d.querySelector('.toggle-chip').click();
+  await wait(250);
+  check(before > 0 && d.querySelectorAll('.translation').length === 0,
+        `A1 defaults sentence translations on (${before}); the toggle hides them`);
+
+  d = await go('/#/story/07-golem', 1500);
+  check(d.querySelectorAll('.translation').length === 0,
+        'B1 defaults sentence translations off, so you attempt the Czech first');
+
+  /* ------------------------------------------- levels and the readout */
+  d = await go('/', 1600);
+  const label = d.querySelector('.readout-label')?.textContent || '';
+  check(/%\s*known/.test(label), `home shows the difficulty readout: "${label}"`);
+  check(parseInt(label, 10) > 0, 'known words raise the percentage above zero');
+  check(d.querySelectorAll('.level-tab').length === 3, 'three level tabs');
+  d.querySelectorAll('.level-tab')[2].click();
+  await wait(300);
+  check(d.querySelectorAll('.story-card').length === 2,
+        'the B1 tab lists its stories and every one opens — nothing is locked');
+
+  /* -------------------------------------------------------- flashcards */
+  d = await go('/#/cards', 1500);
+  const face = d.querySelector('.card-face')?.textContent;
+  check(!!face, `flashcards deal a due card ("${face}")`);
+  d.querySelector('.btn').click();
+  await wait(250);
+  check(!!d.querySelector('.card-back'), 'reveal shows the answer');
+  const boxBefore = JSON.parse(localStorage.getItem('czs.words'))[face]?.box;
+  [...d.querySelectorAll('.btn')].find((b) => /Got it/.test(b.textContent)).click();
+  await wait(300);
+  const boxAfter = JSON.parse(localStorage.getItem('czs.words'))[face]?.box;
+  check(boxAfter === boxBefore + 1, `"Got it" promotes the Leitner box (${boxBefore} → ${boxAfter})`);
+
+  /* -------------------------------------------------------- worksheets */
+  d = await go('/#/worksheet', 1500);
+  [...d.querySelectorAll('.btn')].find((b) => /Build the worksheet/.test(b.textContent)).click();
+  await wait(1800);
+  check(!!d.querySelector('.sheet-head'), 'the worksheet builds');
+  check(d.querySelectorAll('.ws-pairs tr').length > 0, 'translation drill has rows');
+  check(d.querySelectorAll('.ws-grid').length > 0, 'case and conjugation grids render');
+  check(d.querySelectorAll('.ws-gap .blank').length > 0,
+        'fill-in-the-blank uses real sentences pulled from the stories');
+  check(!!d.querySelector('.ws-key'), 'the answer key is included');
+
+  /* --------------------------------------------------------- adventure */
+  d = await go('/#/game', 1500);
+  check(d.querySelectorAll('.choice').length >= 2, 'the adventure offers choices');
+  check(d.querySelectorAll('.adv-scene .w[data-lemma]').length > 10,
+        'adventure prose is tap-to-translate like the reader');
+  d.querySelectorAll('.choice')[0].click();
+  await wait(500);
+  const game = JSON.parse(localStorage.getItem('czs.game') || '{}');
+  check(game.node && game.node !== 'staveniste', `a choice advances and saves state (now: ${game.node})`);
+
+  /* ---------------------------------------------------- export/import */
+  d = await go('/#/settings', 1500);
+  check(/Czech voice|No Czech voice/.test(d.body.textContent),
+        'settings reports Czech voice availability honestly');
+
+  /* ------------------------------------------- no horizontal overflow */
+  for (const route of ['/', '/#/story/07-golem', '/#/saved', '/#/cards', '/#/game', '/#/settings']) {
+    const doc = await go(route, 1200);
+    check(doc.documentElement.scrollWidth <= 391, `${route} does not scroll sideways at 390px`);
+  }
+
+  const passed = results.filter((r) => r.ok).length;
+  out.innerHTML += `\n\n<b>${passed}/${results.length} passed</b>`;
+  document.title = passed === results.length ? 'ALL PASS' : 'FAILURES';
+}
+
+run().catch((err) => {
+  out.innerHTML += `\n\n<span class="f">THREW: ${err.message}</span>\n${err.stack}`;
+  document.title = 'THREW';
+});
+</script>

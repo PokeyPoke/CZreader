@@ -1,0 +1,33 @@
+{
+  "id": "08-hledame-byt",
+  "title": "Hledáme byt v Praze",
+  "level": "B1",
+  "grammarFocus": ["conditional mood", "relative clauses", "comparatives"],
+  "sentences": [
+    { "cs": "Když jsme se s Klárou rozhodli bydlet spolu, mysleli jsme, že najít byt bude snadné.", "en": "When Klára and I decided to live together, we thought finding a flat would be easy." },
+    { "cs": "Mýlili jsme se.", "en": "We were wrong." },
+    { "cs": "Praha je město, kde je nájem vysoký a bytů málo.", "en": "Prague is a city where the rent is high and flats are few." },
+    { "cs": "Každý večer jsme prohlíželi inzeráty na internetu.", "en": "Every evening we went through the adverts on the internet." },
+    { "cs": "Většina z nich byla stará několik dní a už neplatila.", "en": "Most of them were several days old and no longer valid." },
+    { "cs": "Když jsme někam zavolali, majitel často řekl, že byt je už zamluvený.", "en": "When we called somewhere, the owner often said the flat was already reserved." },
+    { "cs": "Jednou jsme přijeli na prohlídku a před domem stálo dvacet dalších lidí.", "en": "Once we arrived for a viewing and twenty other people were standing in front of the building." },
+    { "cs": "Byt měl dvě místnosti, malou kuchyň a okna do dvora.", "en": "The flat had two rooms, a small kitchen and windows onto the courtyard." },
+    { "cs": "Světlo tam skoro nebylo, ale stejně by ho někdo hned vzal.", "en": "There was almost no light, but someone would have taken it straight away anyway." },
+    { "cs": "Klára řekla, že by tam nechtěla bydlet ani zadarmo.", "en": "Klára said she would not want to live there even for free." },
+    { "cs": "Hledali jsme dál, i když nás to už unavovalo.", "en": "We kept looking, even though it was wearing us out." },
+    { "cs": "Kdybychom měli víc peněz, vybírali bychom si.", "en": "If we had more money, we would be picky." },
+    { "cs": "Takhle jsme brali, co bylo.", "en": "As it was, we took what there was." },
+    { "cs": "Nakonec nám pomohla náhoda.", "en": "In the end chance helped us." },
+    { "cs": "Kolega z práce se stěhoval do Berlína a hledal někoho, kdo by si vzal jeho byt.", "en": "A colleague from work was moving to Berlin and was looking for someone who would take over his flat." },
+    { "cs": "Nebyl velký, ale byl světlý a klidný.", "en": "It was not big, but it was light and quiet." },
+    { "cs": "Byl ve starém domě, ve třetím patře, bez výtahu.", "en": "It was in an old building, on the third floor, without a lift." },
+    { "cs": "Nájem byl vyšší, než jsme chtěli platit, ale rozhodli jsme se rychle.", "en": "The rent was higher than we wanted to pay, but we decided quickly." },
+    { "cs": "Podepsali jsme smlouvu na dva roky.", "en": "We signed a two-year contract." },
+    { "cs": "Stěhovali jsme se v sobotu a pršelo celý den.", "en": "We moved on Saturday and it rained all day." },
+    { "cs": "Kamarádi nám pomohli nosit krabice do třetího patra.", "en": "Friends helped us carry boxes up to the third floor." },
+    { "cs": "Večer jsme seděli mezi krabicemi a jedli pizzu z papíru.", "en": "In the evening we sat among the boxes and ate pizza off the paper." },
+    { "cs": "Nábytek jsme skládali ještě další týden.", "en": "We were still assembling the furniture a week later." },
+    { "cs": "Teď, když se ráno probudím, slyším z ulice tramvaj.", "en": "Now, when I wake up in the morning, I hear a tram from the street." },
+    { "cs": "Kdybych si měl vybrat znovu, vybral bych si ten samý byt.", "en": "If I had to choose again, I would choose the same flat." }
+  ]
+}

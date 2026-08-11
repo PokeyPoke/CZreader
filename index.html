@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Čeština — Czech stories</title>
+<meta name="description" content="Read simple Czech stories, tap any word for its translation, pronunciation and full grammar, then practise with flashcards and printable worksheets.">
+
+<meta name="theme-color" content="#14100E" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#EFE6D5" media="(prefers-color-scheme: light)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Čeština">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" href="icons/icon-192.png">
+
+<!-- Preload the reading face: it sets the whole page's rhythm, so a swap is
+     more jarring here than for the UI font. -->
+<link rel="preload" href="fonts/literata-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/print.css" media="print">
+
+<!-- Apply the saved theme before first paint to avoid a flash of the wrong one. -->
+<script>
+  try {
+    var s = JSON.parse(localStorage.getItem('czs.settings') || '{}');
+    document.documentElement.dataset.theme = s.theme || 'dark';
+  } catch (e) {
+    document.documentElement.dataset.theme = 'dark';
+  }
+</script>
+</head>
+<body>
+
+<main id="app">
+  <div class="screen">
+    <div class="masthead">
+      <p class="kicker">Čeština</p>
+      <h1>Loading<em>.</em></h1>
+    </div>
+  </div>
+</main>
+
+<nav class="nav" id="nav" aria-label="Main"></nav>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

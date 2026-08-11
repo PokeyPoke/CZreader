@@ -1,0 +1,33 @@
+{
+  "id": "07-golem",
+  "title": "Golem",
+  "level": "B1",
+  "grammarFocus": ["conditional mood", "relative clauses", "aspect pairs"],
+  "sentences": [
+    { "cs": "Před čtyřmi sty lety žil v Praze učený rabín Löw.", "en": "Four hundred years ago a learned rabbi, Löw, lived in Prague." },
+    { "cs": "Bydlel v židovském městě, nedaleko Staronové synagogy.", "en": "He lived in the Jewish town, not far from the Old-New Synagogue." },
+    { "cs": "Císař ho prý zval na hrad, aby s ním mluvil o hvězdách a o tajemství světa.", "en": "The emperor is said to have invited him to the castle, to speak with him about the stars and the secrets of the world." },
+    { "cs": "V té době se lidé v židovském městě báli.", "en": "At that time the people in the Jewish town were afraid." },
+    { "cs": "Někdo o nich šířil zlé pomluvy a nikdo je nechtěl chránit.", "en": "Someone was spreading evil rumours about them and nobody wanted to protect them." },
+    { "cs": "Rabín přemýšlel, jak by mohl své lidi ochránit.", "en": "The rabbi thought about how he could protect his people." },
+    { "cs": "Jedné noci šel k řece a nabral z břehu hlínu.", "en": "One night he went to the river and scooped up clay from the bank." },
+    { "cs": "Z hlíny vytvořil postavu velkého muže.", "en": "From the clay he formed the figure of a large man." },
+    { "cs": "Když byla socha hotová, vložil jí do úst proužek papíru s posvátným slovem.", "en": "When the statue was finished, he placed into its mouth a strip of paper bearing a sacred word." },
+    { "cs": "Hlína se pohnula a Golem vstal.", "en": "The clay moved and the Golem stood up." },
+    { "cs": "Nemluvil, ale rozuměl všemu, co mu rabín přikázal.", "en": "He did not speak, but he understood everything the rabbi commanded him." },
+    { "cs": "Ve dne nosil vodu a dříví, v noci hlídal ulice.", "en": "By day he carried water and firewood, by night he guarded the streets." },
+    { "cs": "Kdyby někdo přišel se zlým úmyslem, Golem by ho zastavil.", "en": "If anyone came with evil intent, the Golem would stop him." },
+    { "cs": "Lidé začali spát klidněji.", "en": "People began to sleep more peacefully." },
+    { "cs": "Rabín ale věděl, že taková síla je nebezpečná.", "en": "But the rabbi knew that such power is dangerous." },
+    { "cs": "Každý pátek večer proto papír vyndával, aby Golem o svátku odpočíval.", "en": "Every Friday evening he therefore took the paper out, so that the Golem would rest on the holy day." },
+    { "cs": "Jednou na to zapomněl.", "en": "One time he forgot." },
+    { "cs": "Golem se rozzuřil a začal ničit všechno, co mu stálo v cestě.", "en": "The Golem flew into a rage and began destroying everything that stood in his way." },
+    { "cs": "Rabín za ním běžel ulicemi a lidé utíkali do domů.", "en": "The rabbi ran after him through the streets and people fled into their houses." },
+    { "cs": "Nakonec se mu podařilo papír vytáhnout.", "en": "In the end he managed to pull the paper out." },
+    { "cs": "Golem se zastavil a znovu se z něj stala jen hlína.", "en": "The Golem stopped and once again became nothing but clay." },
+    { "cs": "Rabín ho odnesl na půdu synagogy.", "en": "The rabbi carried him up to the synagogue's attic." },
+    { "cs": "Tam prý leží dodnes, přikrytý starými knihami.", "en": "There, they say, he lies to this day, covered with old books." },
+    { "cs": "Nikdo se tam nesmí podívat.", "en": "Nobody is allowed to look there." },
+    { "cs": "Kdyby se někdo odvážil, možná by se Golem probudil znovu.", "en": "If someone dared, perhaps the Golem would wake again." }
+  ]
+}

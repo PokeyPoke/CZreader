@@ -1,0 +1,353 @@
+{
+  "id": "karel-iv",
+  "title": "Kámen na mostě",
+  "subtitle": "Praha, rok 1357",
+  "level": "A1",
+  "start": "staveniste",
+  "nodes": {
+    "staveniste": {
+      "place": "Staveniště u řeky · ráno",
+      "text": [
+        "Je ráno a je zima. Stojíš u řeky a díváš se na vodu.",
+        "Muži staví nový most. Starý most už není, protože voda byla velmi silná.",
+        "Mistr Ota tě volá. Jsi jeho učeň."
+      ],
+      "en": [
+        "It is morning and it is cold. You are standing by the river looking at the water.",
+        "Men are building a new bridge. The old bridge is gone, because the water was very strong.",
+        "Master Ota is calling you. You are his apprentice."
+      ],
+      "choices": [
+        { "cs": "Jdu k mistrovi.", "en": "I go to the master.", "to": "mistr" },
+        { "cs": "Nejdřív se dívám na řeku.", "en": "First I look at the river.", "to": "reka" }
+      ]
+    },
+
+    "reka": {
+      "place": "Břeh řeky",
+      "text": [
+        "Voda je studená a rychlá. V řece leží velké kameny ze starého mostu.",
+        "Starý muž tam stojí a dívá se na vodu.",
+        "„Ten most stál dvě stě let,“ říká. „Nový most musí být silnější.“"
+      ],
+      "en": [
+        "The water is cold and fast. Big stones from the old bridge lie in the river.",
+        "An old man stands there looking at the water.",
+        "\"That bridge stood for two hundred years,\" he says. \"The new bridge must be stronger.\""
+      ],
+      "choices": [
+        { "cs": "Ptám se, jak dělat silnější most.", "en": "I ask how to make a stronger bridge.", "to": "starec", "set": { "mluvilSeStarcem": true } },
+        { "cs": "Jdu k mistrovi.", "en": "I go to the master.", "to": "mistr" }
+      ]
+    },
+
+    "starec": {
+      "place": "Břeh řeky",
+      "text": [
+        "Starý muž se směje.",
+        "„Kámen je jenom kámen. Důležitá je malta mezi kameny.“",
+        "„A dobrá malta potřebuje víc než vodu a písek. To ti řekne tvůj mistr.“"
+      ],
+      "en": [
+        "The old man laughs.",
+        "\"Stone is only stone. What matters is the mortar between the stones.\"",
+        "\"And good mortar needs more than water and sand. Your master will tell you that.\""
+      ],
+      "choices": [
+        { "cs": "Děkuji a jdu k mistrovi.", "en": "I thank him and go to the master.", "to": "mistr" }
+      ]
+    },
+
+    "mistr": {
+      "place": "Staveniště · u mistra",
+      "text": [
+        "Mistr Ota je starý a unavený. Má velké ruce a bílé vlasy.",
+        "„Dnes je důležitý den,“ říká. „Musíme mít maltu, ale nemáme vejce.“",
+        "Dává ti velký košík."
+      ],
+      "en": [
+        "Master Ota is old and tired. He has big hands and white hair.",
+        "\"Today is an important day,\" he says. \"We must have mortar, but we have no eggs.\"",
+        "He gives you a large basket."
+      ],
+      "choices": [
+        { "cs": "Proč potřebujeme vejce?", "en": "Why do we need eggs?", "to": "proc-vejce", "give": "košík" },
+        { "cs": "Beru košík a jdu na trh.", "en": "I take the basket and go to the market.", "to": "trh", "give": "košík" }
+      ]
+    },
+
+    "proc-vejce": {
+      "place": "Staveniště · u mistra",
+      "text": [
+        "„Vejce dělají maltu silnou,“ říká mistr.",
+        "„Císař chce most, který bude stát tisíc let. Voda ho nesmí vzít.“",
+        "„Vesnice nám vejce pošlou. Ale někdo musí čekat na trhu.“"
+      ],
+      "en": [
+        "\"Eggs make the mortar strong,\" says the master.",
+        "\"The emperor wants a bridge that will stand for a thousand years. The water must not take it.\"",
+        "\"The villages will send us eggs. But someone must wait at the market.\""
+      ],
+      "choices": [
+        { "cs": "Jdu na trh.", "en": "I go to the market.", "to": "trh", "set": { "vim": true } }
+      ]
+    },
+
+    "trh": {
+      "place": "Staroměstský trh",
+      "text": [
+        "Na trhu je hodně lidí. Ženy prodávají chléb, sýr a maso.",
+        "Malé děti běhají mezi lidmi a smějí se.",
+        "Vidíš sedláka, který má vejce, a vzadu stojí vozy z vesnice."
+      ],
+      "en": [
+        "There are many people at the market. Women are selling bread, cheese and meat.",
+        "Small children run between the people and laugh.",
+        "You see a farmer who has eggs, and at the back there are wagons from a village."
+      ],
+      "choices": [
+        { "cs": "Jdu k sedlákovi.", "en": "I go to the farmer.", "to": "sedlak" },
+        { "cs": "Jdu k vozům.", "en": "I go to the wagons.", "to": "vozy" },
+        { "cs": "Kupuji chléb, protože mám hlad.", "en": "I buy bread, because I am hungry.", "to": "chleb", "notFlag": "jedl" }
+      ]
+    },
+
+    "chleb": {
+      "place": "Staroměstský trh",
+      "text": [
+        "Chléb je teplý a dobrý. Žena se na tebe usmívá.",
+        "„Ty jsi ten učeň od mistra Oty, že?“ ptá se. „Váš most bude krásný.“"
+      ],
+      "en": [
+        "The bread is warm and good. The woman smiles at you.",
+        "\"You are Master Ota's apprentice, aren't you?\" she asks. \"Your bridge will be beautiful.\""
+      ],
+      "choices": [
+        { "cs": "Vracím se na trh.", "en": "I go back into the market.", "to": "trh", "set": { "jedl": true } }
+      ]
+    },
+
+    "sedlak": {
+      "place": "Staroměstský trh · u sedláka",
+      "text": [
+        "Sedlák má malý stůl a na něm třicet vajec.",
+        "„Kolik chceš?“ ptá se.",
+        "„Všechna,“ odpovídáš. „Stavíme most.“"
+      ],
+      "en": [
+        "The farmer has a small table with thirty eggs on it.",
+        "\"How many do you want?\" he asks.",
+        "\"All of them,\" you answer. \"We are building a bridge.\""
+      ],
+      "choices": [
+        { "cs": "Dávám vejce do košíku.", "en": "I put the eggs into the basket.", "to": "vozy", "needItem": "košík", "give": "vejce" }
+      ]
+    },
+
+    "vozy": {
+      "place": "Staroměstský trh · vozy z vesnice",
+      "text": [
+        "U vozů stojí muži z vesnice. Smějí se a ukazují na velký koš.",
+        "„Poslali jsme vejce,“ říká jeden muž. „Ale naše vesnice je daleko.“",
+        "Díváš se do koše. Všechna vejce jsou vařená."
+      ],
+      "en": [
+        "Men from a village stand by the wagons. They laugh and point at a large hamper.",
+        "\"We sent eggs,\" says one man. \"But our village is far away.\"",
+        "You look into the hamper. All the eggs are hard-boiled."
+      ],
+      "choices": [
+        { "cs": "Ptám se, proč jsou vejce vařená.", "en": "I ask why the eggs are boiled.", "to": "varena-vejce" }
+      ]
+    },
+
+    "varena-vejce": {
+      "place": "Staroměstský trh",
+      "text": [
+        "„Cesta je dlouhá,“ říká muž tiše. „Mysleli jsme, že se vejce cestou rozbijí.“",
+        "Všichni na trhu se smějí. Muž z vesnice je červený.",
+        "Ty se ale nesměješ. Bereš košík a jdeš zpátky k řece."
+      ],
+      "en": [
+        "\"The road is long,\" the man says quietly. \"We thought the eggs would break on the way.\"",
+        "Everyone at the market laughs. The man from the village turns red.",
+        "But you do not laugh. You take the basket and go back to the river."
+      ],
+      "choices": [
+        { "cs": "Jdu zpátky na staveniště.", "en": "I go back to the building site.", "to": "zpatky", "needItem": "vejce" },
+        { "cs": "Nejdřív musím koupit vejce od sedláka.", "en": "First I must buy eggs from the farmer.", "to": "sedlak", "notItem": "vejce" }
+      ]
+    },
+
+    "zpatky": {
+      "place": "Staveniště · odpoledne",
+      "text": [
+        "Mistr Ota se dívá do košíku a nic neříká.",
+        "Potom bere jedno vejce a dává ho do malty.",
+        "„Dobře,“ říká. „Teď budeme pracovat.“"
+      ],
+      "en": [
+        "Master Ota looks into the basket and says nothing.",
+        "Then he takes one egg and puts it into the mortar.",
+        "\"Good,\" he says. \"Now we will work.\""
+      ],
+      "choices": [
+        { "cs": "Pracuji s maltou.", "en": "I work with the mortar.", "to": "malta", "take": "vejce" }
+      ]
+    },
+
+    "malta": {
+      "place": "Staveniště · odpoledne",
+      "text": [
+        "Malta je těžká a studená. Ruce tě bolí.",
+        "Pracuješ dlouho a slunce jde dolů.",
+        "Potom přijde muž v černých šatech. Není to dělník."
+      ],
+      "en": [
+        "The mortar is heavy and cold. Your hands hurt.",
+        "You work for a long time and the sun goes down.",
+        "Then a man in black clothes arrives. He is not a workman."
+      ],
+      "choices": [
+        { "cs": "Ptám se mistra, kdo to je.", "en": "I ask the master who that is.", "to": "hvezdar" }
+      ]
+    },
+
+    "hvezdar": {
+      "place": "Staveniště · večer",
+      "text": [
+        "„To je císařův hvězdář,“ říká mistr tiše.",
+        "Hvězdář má velkou knihu a dívá se na nebe.",
+        "„Císař Karel nechce jenom silný most,“ říká mistr. „Chce ten správný čas.“"
+      ],
+      "en": [
+        "\"That is the emperor's astronomer,\" the master says quietly.",
+        "The astronomer has a large book and is looking at the sky.",
+        "\"Emperor Charles does not only want a strong bridge,\" says the master. \"He wants the right moment.\""
+      ],
+      "choices": [
+        { "cs": "Jaký správný čas?", "en": "What right moment?", "to": "cislo" }
+      ]
+    },
+
+    "cislo": {
+      "place": "Staveniště · večer",
+      "text": [
+        "Hvězdář píše čísla do knihy a ukazuje ti je.",
+        "„Rok tisíc tři sta padesát sedm. Devátý měsíc, sedmý den. Pět hodin a třicet jedna minut ráno.“",
+        "„Ta čísla jdou nahoru a dolů. Je to silné číslo. Most bude stát navždy.“"
+      ],
+      "en": [
+        "The astronomer writes numbers in his book and shows them to you.",
+        "\"The year thirteen fifty-seven. The ninth month, the seventh day. Five hours and thirty-one minutes in the morning.\"",
+        "\"Those numbers go up and down. It is a strong number. The bridge will stand forever.\""
+      ],
+      "choices": [
+        { "cs": "To je zítra ráno!", "en": "That is tomorrow morning!", "to": "vecer", "set": { "znaCas": true } }
+      ]
+    },
+
+    "vecer": {
+      "place": "Staveniště · noc",
+      "text": [
+        "Je noc a je velká zima. Muži jdou domů spát.",
+        "Mistr Ota se na tebe dívá.",
+        "„Zítra ráno položíme první kámen. Kdo tam nebude, ten to nikdy neuvidí.“"
+      ],
+      "en": [
+        "It is night and very cold. The men go home to sleep.",
+        "Master Ota looks at you.",
+        "\"Tomorrow morning we will lay the first stone. Whoever is not there will never see it.\""
+      ],
+      "choices": [
+        { "cs": "Zůstávám na staveništi celou noc.", "en": "I stay at the building site all night.", "to": "cekani" },
+        { "cs": "Jdu domů spát, protože jsem velmi unavený.", "en": "I go home to sleep, because I am very tired.", "to": "spanek" }
+      ]
+    },
+
+    "cekani": {
+      "place": "Staveniště · noc",
+      "text": [
+        "Sedíš u malého ohně a díváš se na vodu.",
+        "Město spí. Slyšíš jenom řeku.",
+        "Nebe je černé a plné hvězd. Čekáš."
+      ],
+      "en": [
+        "You sit by a small fire and look at the water.",
+        "The city is asleep. You hear only the river.",
+        "The sky is black and full of stars. You wait."
+      ],
+      "choices": [
+        { "cs": "Čekám do rána.", "en": "I wait until morning.", "to": "okamzik" }
+      ]
+    },
+
+    "spanek": {
+      "place": "Doma · ráno",
+      "text": [
+        "Doma je teplo. Rychle usínáš.",
+        "Když se probudíš, slunce už je vysoko.",
+        "Běžíš k řece, ale je pozdě."
+      ],
+      "en": [
+        "It is warm at home. You fall asleep quickly.",
+        "When you wake up, the sun is already high.",
+        "You run to the river, but it is late."
+      ],
+      "choices": [
+        { "cs": "Jdu k mistrovi.", "en": "I go to the master.", "to": "konec-pozde" }
+      ]
+    },
+
+    "okamzik": {
+      "place": "Staveniště · pět hodin ráno",
+      "text": [
+        "Ráno je studené a tiché. Voda je černá.",
+        "Hvězdář stojí u vody a dívá se na nebe. Mistr Ota drží první kámen.",
+        "„Teď,“ říká hvězdář."
+      ],
+      "en": [
+        "The morning is cold and quiet. The water is black.",
+        "The astronomer stands by the water looking at the sky. Master Ota holds the first stone.",
+        "\"Now,\" says the astronomer."
+      ],
+      "choices": [
+        { "cs": "Pomáhám mistrovi položit kámen.", "en": "I help the master lay the stone.", "to": "konec-dobry", "needFlag": "znaCas" }
+      ]
+    },
+
+    "konec-dobry": {
+      "place": "Staveniště · 9. července 1357",
+      "text": [
+        "Kámen jde dolů do malty. Voda ho nevezme.",
+        "Mistr Ota se na tebe dívá a poprvé se směje.",
+        "„Ten most tady bude, když ty a já už tady nebudeme,“ říká. „A ty jsi u toho byl.“"
+      ],
+      "en": [
+        "The stone goes down into the mortar. The water will not take it.",
+        "Master Ota looks at you and laughs for the first time.",
+        "\"This bridge will be here when you and I are gone,\" he says. \"And you were there for it.\""
+      ],
+      "ending": true,
+      "endingTitle": "The first stone",
+      "endingNote": "You were present at the laying of Charles Bridge's foundation stone. The palindrome 1-3-5-7-9-7-5-3-1 and the eggs in the mortar are both part of the real Prague legend — and the bridge is still standing."
+    },
+
+    "konec-pozde": {
+      "place": "Staveniště · dopoledne",
+      "text": [
+        "Mistr Ota sedí na kameni a pije vodu.",
+        "„Kámen už leží,“ říká. „Byl jsi doma.“",
+        "Nic víc neříká. Potom ti dává novou práci."
+      ],
+      "en": [
+        "Master Ota sits on a stone drinking water.",
+        "\"The stone is already laid,\" he says. \"You were at home.\"",
+        "He says nothing more. Then he gives you new work."
+      ],
+      "ending": true,
+      "endingTitle": "You slept through it",
+      "endingNote": "The bridge went up all the same, and you worked on it for thirty more years. But you never saw the first stone go down. Play again and stay awake."
+    }
+  }
+}

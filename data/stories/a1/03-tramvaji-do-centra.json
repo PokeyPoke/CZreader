@@ -1,0 +1,22 @@
+{
+  "id": "03-tramvaji-do-centra",
+  "title": "Tramvají do centra",
+  "level": "A1",
+  "grammarFocus": ["present tense", "instrumental of transport"],
+  "sentences": [
+    { "cs": "Tomáš bydlí v Praze a nemá auto.", "en": "Tomáš lives in Prague and doesn't have a car." },
+    { "cs": "Do centra jezdí tramvají.", "en": "He travels to the centre by tram." },
+    { "cs": "Zastávka je před jeho domem.", "en": "The stop is in front of his house." },
+    { "cs": "Ráno tam čeká pět minut.", "en": "In the morning he waits there for five minutes." },
+    { "cs": "Tramvaj číslo dvacet dva jede do centra.", "en": "Tram number twenty-two goes to the centre." },
+    { "cs": "Ráno je v tramvaji hodně lidí.", "en": "In the morning there are a lot of people on the tram." },
+    { "cs": "Tomáš stojí, protože nemá místo.", "en": "Tomáš stands, because he has no seat." },
+    { "cs": "Dívá se z okna na řeku a na starý most.", "en": "He looks out of the window at the river and the old bridge." },
+    { "cs": "Praha je krásné město.", "en": "Prague is a beautiful city." },
+    { "cs": "Za dvacet minut vystupuje v centru.", "en": "In twenty minutes he gets off in the centre." },
+    { "cs": "Jeho kancelář je vedle staré kavárny.", "en": "His office is next to an old café." },
+    { "cs": "Tam každé ráno pije malé espreso.", "en": "There he drinks a small espresso every morning." },
+    { "cs": "Práce začíná v devět hodin.", "en": "Work starts at nine o'clock." },
+    { "cs": "Večer jede Tomáš domů stejnou tramvají.", "en": "In the evening Tomáš rides home on the same tram." }
+  ]
+}

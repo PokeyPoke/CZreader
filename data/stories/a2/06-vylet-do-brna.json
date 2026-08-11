@@ -1,0 +1,25 @@
+{
+  "id": "06-vylet-do-brna",
+  "title": "Výlet do Brna",
+  "level": "A2",
+  "grammarFocus": ["past tense (we-form)", "prepositions of place"],
+  "sentences": [
+    { "cs": "Loni v létě jsme jeli s kamarády do Brna.", "en": "Last summer we went to Brno with friends." },
+    { "cs": "Lístky na vlak jsme si koupili už týden předtím.", "en": "We bought the train tickets a week beforehand." },
+    { "cs": "Vlak z Prahy jel dvě a půl hodiny.", "en": "The train from Prague took two and a half hours." },
+    { "cs": "Z nádraží jsme šli pěšky do centra.", "en": "From the station we walked to the centre." },
+    { "cs": "Nejdřív jsme viděli náměstí Svobody.", "en": "First we saw Freedom Square." },
+    { "cs": "Potom jsme vyšli nahoru na hrad Špilberk.", "en": "Then we walked up to Špilberk castle." },
+    { "cs": "Z hradu je krásný výhled na celé město.", "en": "From the castle there is a beautiful view over the whole city." },
+    { "cs": "K obědu jsme si dali svíčkovou a pivo.", "en": "For lunch we had svíčková and beer." },
+    { "cs": "Odpoledne jsme navštívili slavnou vilu na kopci.", "en": "In the afternoon we visited a famous villa on the hill." },
+    { "cs": "Postavil ji známý architekt před sto lety.", "en": "A well-known architect built it a hundred years ago." },
+    { "cs": "Průvodkyně nám vyprávěla o historii domu.", "en": "The guide told us about the history of the house." },
+    { "cs": "Večer jsme seděli v hospodě v centru.", "en": "In the evening we sat in a pub in the centre." },
+    { "cs": "Brno je menší než Praha, ale je tam příjemně.", "en": "Brno is smaller than Prague, but it is pleasant there." },
+    { "cs": "Lidé tam mluví trochu jinak než v Praze.", "en": "People there speak a little differently than in Prague." },
+    { "cs": "Vlak zpátky jel v deset večer.", "en": "The train back left at ten in the evening." },
+    { "cs": "Byli jsme unavení, ale spokojení.", "en": "We were tired, but happy." },
+    { "cs": "Příště pojedeme na celý víkend.", "en": "Next time we will go for the whole weekend." }
+  ]
+}

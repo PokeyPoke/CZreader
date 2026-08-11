@@ -1,0 +1,13 @@
+{
+  "_comment": "Manifest. The parts are merged at load, and the surface-form lookup index is derived from each entry's form tables. Order matters: when two lemmas claim the same surface form, the one loaded first wins, so the commonest words come first.",
+  "parts": [
+    "data/dict/01-function.json",
+    "data/dict/02-adverbs-numbers.json",
+    "data/dict/03-verbs-a.json",
+    "data/dict/04-verbs-b.json",
+    "data/dict/05-nouns-a.json",
+    "data/dict/06-nouns-b.json",
+    "data/dict/07-adjectives.json",
+    "data/dict/08-names.json"
+  ]
+}

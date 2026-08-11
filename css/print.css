@@ -1,0 +1,202 @@
+/* ==========================================================================
+   print.css — printable worksheets.
+   Loaded with media="print" so it never affects the on-screen app. Sized for
+   A4 and Letter; iOS Safari's print dialog can "Save to Files" as PDF.
+   ========================================================================== */
+
+@page {
+  size: A4 portrait;
+  margin: 16mm 14mm;
+}
+
+@media print {
+  /* Everything that belongs to the app chrome disappears. */
+  .nav, .reader-bar, .scrim, .sheet, .toast, .topbar, .no-print { display: none !important; }
+
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 12pt;
+  }
+  body::before { display: none !important; } /* no grain on paper */
+
+  #app {
+    max-width: none;
+    padding: 0;
+    min-height: 0;
+  }
+  .screen { padding: 0; animation: none; }
+
+  a { color: #000; text-decoration: none; }
+
+  .sheet-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 2pt solid #000;
+    padding-bottom: 4mm;
+    margin-bottom: 7mm;
+  }
+  .sheet-head h1 {
+    font-family: 'Bricolage', sans-serif;
+    font-size: 18pt;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+  .sheet-head .meta {
+    font-family: 'Bricolage', sans-serif;
+    font-size: 9pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .ws-section {
+    /* Never split an exercise across a page if it can be avoided. */
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 9mm;
+  }
+  .ws-section > h2 {
+    font-family: 'Bricolage', sans-serif;
+    font-size: 12pt;
+    margin: 0 0 1mm;
+    letter-spacing: -0.01em;
+  }
+  .ws-instruction {
+    font-family: 'Bricolage', sans-serif;
+    font-size: 9pt;
+    font-style: italic;
+    margin: 0 0 4mm;
+    color: #333;
+  }
+
+  .ws-break { break-before: page; page-break-before: always; }
+
+  /* Two-column translation drill */
+  .ws-pairs {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .ws-pairs td {
+    padding: 3.4mm 2mm;
+    border-bottom: 0.4pt solid #999;
+    font-size: 12pt;
+    vertical-align: bottom;
+  }
+  .ws-pairs td:first-child { width: 42%; font-weight: 600; }
+  .ws-pairs td:last-child { border-bottom: 0.8pt solid #000; }
+
+  /* Word bank */
+  .ws-bank {
+    border: 0.8pt solid #000;
+    padding: 3mm 4mm;
+    margin-bottom: 5mm;
+    font-size: 11pt;
+    line-height: 1.9;
+  }
+  .ws-bank strong {
+    font-family: 'Bricolage', sans-serif;
+    font-size: 8.5pt;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 1.5mm;
+  }
+  .ws-bank span { margin-right: 5mm; white-space: nowrap; }
+
+  /* Fill in the blank */
+  .ws-gap {
+    font-size: 12pt;
+    line-height: 2.5;
+    margin: 0 0 3mm;
+  }
+  .ws-gap .blank {
+    display: inline-block;
+    min-width: 32mm;
+    border-bottom: 0.8pt solid #000;
+  }
+  .ws-gap .en {
+    display: block;
+    font-family: 'Bricolage', sans-serif;
+    font-size: 9pt;
+    color: #444;
+    line-height: 1.4;
+    margin-top: -3mm;
+  }
+
+  /* Declension / conjugation grids */
+  .ws-grid {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 5mm;
+  }
+  .ws-grid caption {
+    text-align: left;
+    font-family: 'Bricolage', sans-serif;
+    font-weight: 700;
+    font-size: 11pt;
+    padding-bottom: 1.5mm;
+  }
+  .ws-grid th, .ws-grid td {
+    border: 0.5pt solid #000;
+    padding: 3.2mm 2mm;
+    text-align: left;
+    font-size: 10pt;
+  }
+  .ws-grid th {
+    font-family: 'Bricolage', sans-serif;
+    font-weight: 500;
+    font-size: 8.5pt;
+    width: 34%;
+    background: #f0f0f0;
+  }
+  .ws-grid td { height: 8mm; }
+
+  /* Matching columns */
+  .ws-match {
+    display: flex;
+    justify-content: space-between;
+    gap: 20mm;
+  }
+  .ws-match ol {
+    margin: 0;
+    padding-left: 6mm;
+    flex: 1;
+    font-size: 11.5pt;
+    line-height: 2.5;
+  }
+  .ws-match ol:last-child { list-style: upper-alpha; }
+
+  /* Handwriting practice with a guide line for diacritics */
+  .ws-trace {
+    margin-bottom: 6mm;
+  }
+  .ws-trace .model {
+    font-size: 15pt;
+    letter-spacing: 0.06em;
+    color: #b8b8b8;
+    border-bottom: 0.5pt solid #000;
+    padding-bottom: 1mm;
+    margin-bottom: 0;
+  }
+  .ws-trace .line {
+    height: 9mm;
+    border-bottom: 0.5pt solid #000;
+  }
+  .ws-trace .label {
+    font-family: 'Bricolage', sans-serif;
+    font-size: 8.5pt;
+    color: #444;
+    margin-bottom: 1mm;
+  }
+
+  /* Answer key, deliberately last */
+  .ws-key {
+    break-before: page;
+    page-break-before: always;
+    font-size: 10pt;
+    columns: 2;
+    column-gap: 10mm;
+  }
+  .ws-key p { margin: 0 0 1.5mm; break-inside: avoid; }
+}

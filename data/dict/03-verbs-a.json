@@ -1,0 +1,737 @@
+{
+  "_comment": "Verbs A-M. Each entry gives the present tense, the -l past participle (which combines with být to make the past tense), and the imperative where it is natural.",
+  "lemmas": {
+    "jít": {
+      "translation": "to go, to walk",
+      "phonetic": "yeet",
+      "ipa": "jiːt",
+      "pos": "verb",
+      "note": "Motion on foot, one direction, one occasion. Its past tense is suppletive: šel, šla, šli. For repeated walking use chodit; for going by vehicle, jet.",
+      "forms": {
+        "present": { "já": "jdu", "ty": "jdeš", "on/ona/ono": "jde", "my": "jdeme", "vy": "jdete", "oni": "jdou" },
+        "past": { "m": "šel", "f": "šla", "n": "šlo", "pl": "šli" },
+        "imperative": { "ty": "jdi", "vy": "jděte" }
+      },
+      "extra": ["šly"]
+    },
+    "jet": {
+      "translation": "to go (by vehicle), to ride, to drive",
+      "phonetic": "yet",
+      "ipa": "jɛt",
+      "pos": "verb",
+      "note": "One direction, one occasion, by any vehicle. For repeated journeys use jezdit.",
+      "forms": {
+        "present": { "já": "jedu", "ty": "jedeš", "on/ona/ono": "jede", "my": "jedeme", "vy": "jedete", "oni": "jedou" },
+        "past": { "m": "jel", "f": "jela", "n": "jelo", "pl": "jeli" },
+        "imperative": { "ty": "jeď", "vy": "jeďte" }
+      }
+    },
+    "jezdit": {
+      "translation": "to go regularly (by vehicle), to commute",
+      "phonetic": "YEZ-dit",
+      "ipa": "jɛzɟɪt",
+      "pos": "verb",
+      "note": "The habitual partner of jet: jezdím tramvají = I go by tram (as a rule).",
+      "forms": {
+        "present": { "já": "jezdím", "ty": "jezdíš", "on/ona/ono": "jezdí", "my": "jezdíme", "vy": "jezdíte", "oni": "jezdí" },
+        "past": { "m": "jezdil", "f": "jezdila", "n": "jezdilo", "pl": "jezdili" }
+      }
+    },
+    "pojet": {
+      "translation": "to set off (by vehicle) — future of jet",
+      "phonetic": "PO-yet",
+      "ipa": "pɔjɛt",
+      "pos": "verb",
+      "note": "Verbs of motion make their future with po-: pojedu = I will go.",
+      "forms": {
+        "future": { "já": "pojedu", "ty": "pojedeš", "on/ona/ono": "pojede", "my": "pojedeme", "vy": "pojedete", "oni": "pojedou" }
+      }
+    },
+    "přijít": {
+      "translation": "to arrive, to come (on foot)",
+      "phonetic": "PRZHI-yeet",
+      "ipa": "pr̝ɪjiːt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "přijdu", "ty": "přijdeš", "on/ona/ono": "přijde", "my": "přijdeme", "vy": "přijdete", "oni": "přijdou" },
+        "past": { "m": "přišel", "f": "přišla", "n": "přišlo", "pl": "přišli" },
+        "negative": { "on/ona/ono": "nepřijde" }
+      }
+    },
+    "přijet": {
+      "translation": "to arrive (by vehicle)",
+      "phonetic": "PRZHI-yet",
+      "ipa": "pr̝ɪjɛt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "přijedu", "ty": "přijedeš", "on/ona/ono": "přijede", "my": "přijedeme", "vy": "přijedete", "oni": "přijedou" },
+        "past": { "m": "přijel", "f": "přijela", "n": "přijelo", "pl": "přijeli" }
+      }
+    },
+    "vyjet": {
+      "translation": "to set off, to drive out",
+      "phonetic": "VI-yet",
+      "ipa": "vɪjɛt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "vyjedu", "ty": "vyjedeš", "on/ona/ono": "vyjede", "my": "vyjedeme", "vy": "vyjedete", "oni": "vyjedou" },
+        "past": { "m": "vyjel", "f": "vyjela", "n": "vyjelo", "pl": "vyjeli" }
+      }
+    },
+    "vyjít": {
+      "translation": "to walk out, to go up",
+      "phonetic": "VI-yeet",
+      "ipa": "vɪjiːt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "vyjdu", "ty": "vyjdeš", "on/ona/ono": "vyjde", "my": "vyjdeme", "vy": "vyjdete", "oni": "vyjdou" },
+        "past": { "m": "vyšel", "f": "vyšla", "n": "vyšlo", "pl": "vyšli" }
+      }
+    },
+    "běžet": {
+      "translation": "to run",
+      "phonetic": "BYE-zhet",
+      "ipa": "bjɛʒɛt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "běžím", "ty": "běžíš", "on/ona/ono": "běží", "my": "běžíme", "vy": "běžíte", "oni": "běží" },
+        "past": { "m": "běžel", "f": "běžela", "n": "běželo", "pl": "běželi" }
+      }
+    },
+    "běhat": {
+      "translation": "to run around, to run regularly",
+      "phonetic": "BYE-hat",
+      "ipa": "bjɛɦat",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "běhám", "ty": "běháš", "on/ona/ono": "běhá", "my": "běháme", "vy": "běháte", "oni": "běhají" },
+        "past": { "m": "běhal", "f": "běhala", "n": "běhalo", "pl": "běhali" }
+      }
+    },
+    "utíkat": {
+      "translation": "to run away, to flee",
+      "phonetic": "OO-tyee-kat",
+      "ipa": "uciːkat",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "utíkám", "ty": "utíkáš", "on/ona/ono": "utíká", "my": "utíkáme", "vy": "utíkáte", "oni": "utíkají" },
+        "past": { "m": "utíkal", "f": "utíkala", "n": "utíkalo", "pl": "utíkali" }
+      }
+    },
+
+    "dělat": {
+      "translation": "to do, to make",
+      "phonetic": "DYE-lat",
+      "ipa": "ɟɛlat",
+      "pos": "verb",
+      "note": "Imperfective — an ongoing or repeated action. Its perfective pair udělat means to get it done.",
+      "forms": {
+        "present": { "já": "dělám", "ty": "děláš", "on/ona/ono": "dělá", "my": "děláme", "vy": "děláte", "oni": "dělají" },
+        "past": { "m": "dělal", "f": "dělala", "n": "dělalo", "pl": "dělali" },
+        "imperative": { "ty": "dělej", "vy": "dělejte" }
+      }
+    },
+    "udělat": {
+      "translation": "to do, to make (and finish)",
+      "phonetic": "OO-dye-lat",
+      "ipa": "uɟɛlat",
+      "pos": "verb",
+      "note": "Perfective. Its present forms carry future meaning: udělám = I will make.",
+      "forms": {
+        "future": { "já": "udělám", "ty": "uděláš", "on/ona/ono": "udělá", "my": "uděláme", "vy": "uděláte", "oni": "udělají" },
+        "past": { "m": "udělal", "f": "udělala", "n": "udělalo", "pl": "udělali" }
+      }
+    },
+    "pracovat": {
+      "translation": "to work",
+      "phonetic": "PRA-tso-vat",
+      "ipa": "pratsɔvat",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "pracuji", "ty": "pracuješ", "on/ona/ono": "pracuje", "my": "pracujeme", "vy": "pracujete", "oni": "pracují" },
+        "past": { "m": "pracoval", "f": "pracovala", "n": "pracovalo", "pl": "pracovali" }
+      },
+      "extra": ["pracuju"]
+    },
+    "vstávat": {
+      "translation": "to get up, to rise",
+      "phonetic": "FSTAA-vat",
+      "ipa": "fstaːvat",
+      "pos": "verb",
+      "note": "Imperfective, for the daily habit. The perfective vstát is for one particular getting-up.",
+      "forms": {
+        "present": { "já": "vstávám", "ty": "vstáváš", "on/ona/ono": "vstává", "my": "vstáváme", "vy": "vstáváte", "oni": "vstávají" },
+        "past": { "m": "vstával", "f": "vstávala", "n": "vstávalo", "pl": "vstávali" },
+        "imperative": { "ty": "vstávej", "vy": "vstávejte" }
+      }
+    },
+    "vstát": {
+      "translation": "to stand up, to get up (once)",
+      "phonetic": "fstaat",
+      "ipa": "fstaːt",
+      "pos": "verb",
+      "forms": {
+        "future": { "já": "vstanu", "ty": "vstaneš", "on/ona/ono": "vstane", "my": "vstaneme", "vy": "vstanete", "oni": "vstanou" },
+        "past": { "m": "vstal", "f": "vstala", "n": "vstalo", "pl": "vstali" }
+      }
+    },
+    "pít": {
+      "translation": "to drink",
+      "phonetic": "peet",
+      "ipa": "piːt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "piju", "ty": "piješ", "on/ona/ono": "pije", "my": "pijeme", "vy": "pijete", "oni": "pijí" },
+        "past": { "m": "pil", "f": "pila", "n": "pilo", "pl": "pili" },
+        "imperative": { "ty": "pij", "vy": "pijte" }
+      },
+      "extra": ["piji"]
+    },
+    "jíst": {
+      "translation": "to eat",
+      "phonetic": "yeest",
+      "ipa": "jiːst",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "jím", "ty": "jíš", "on/ona/ono": "jí", "my": "jíme", "vy": "jíte", "oni": "jedí" },
+        "past": { "m": "jedl", "f": "jedla", "n": "jedlo", "pl": "jedli" },
+        "imperative": { "ty": "jez", "vy": "jezte" }
+      }
+    },
+    "vařit": {
+      "translation": "to cook, to boil",
+      "phonetic": "VA-rzhit",
+      "ipa": "var̝ɪt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "vařím", "ty": "vaříš", "on/ona/ono": "vaří", "my": "vaříme", "vy": "vaříte", "oni": "vaří" },
+        "past": { "m": "vařil", "f": "vařila", "n": "vařilo", "pl": "vařili" }
+      }
+    },
+    "uvařit": {
+      "translation": "to cook (and finish), to make",
+      "phonetic": "OO-va-rzhit",
+      "ipa": "uvar̝ɪt",
+      "pos": "verb",
+      "forms": {
+        "future": { "já": "uvařím", "ty": "uvaříš", "on/ona/ono": "uvaří", "my": "uvaříme", "vy": "uvaříte", "oni": "uvaří" },
+        "past": { "m": "uvařil", "f": "uvařila", "n": "uvařilo", "pl": "uvařili" }
+      }
+    },
+    "číst": {
+      "translation": "to read",
+      "phonetic": "cheest",
+      "ipa": "tʃiːst",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "čtu", "ty": "čteš", "on/ona/ono": "čte", "my": "čteme", "vy": "čtete", "oni": "čtou" },
+        "past": { "m": "četl", "f": "četla", "n": "četlo", "pl": "četli" },
+        "imperative": { "ty": "čti", "vy": "čtěte" }
+      }
+    },
+    "psát": {
+      "translation": "to write",
+      "phonetic": "psaat",
+      "ipa": "psaːt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "píšu", "ty": "píšeš", "on/ona/ono": "píše", "my": "píšeme", "vy": "píšete", "oni": "píšou" },
+        "past": { "m": "psal", "f": "psala", "n": "psalo", "pl": "psali" }
+      },
+      "extra": ["píši"]
+    },
+    "napsat": {
+      "translation": "to write (and finish)",
+      "phonetic": "NAP-sat",
+      "ipa": "napsat",
+      "pos": "verb",
+      "forms": {
+        "future": { "já": "napíšu", "ty": "napíšeš", "on/ona/ono": "napíše", "my": "napíšeme", "vy": "napíšete", "oni": "napíšou" },
+        "past": { "m": "napsal", "f": "napsala", "n": "napsalo", "pl": "napsali" }
+      }
+    },
+    "spát": {
+      "translation": "to sleep",
+      "phonetic": "spaat",
+      "ipa": "spaːt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "spím", "ty": "spíš", "on/ona/ono": "spí", "my": "spíme", "vy": "spíte", "oni": "spí" },
+        "past": { "m": "spal", "f": "spala", "n": "spalo", "pl": "spali" }
+      }
+    },
+    "usínat": {
+      "translation": "to fall asleep",
+      "phonetic": "OO-see-nat",
+      "ipa": "usiːnat",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "usínám", "ty": "usínáš", "on/ona/ono": "usíná", "my": "usínáme", "vy": "usínáte", "oni": "usínají" },
+        "past": { "m": "usínal", "f": "usínala", "n": "usínalo", "pl": "usínali" }
+      }
+    },
+    "probudit": {
+      "translation": "to wake (someone); with se, to wake up",
+      "phonetic": "PRO-boo-dit",
+      "ipa": "prɔbuɟɪt",
+      "pos": "verb",
+      "forms": {
+        "future": { "já": "probudím", "ty": "probudíš", "on/ona/ono": "probudí", "my": "probudíme", "vy": "probudíte", "oni": "probudí" },
+        "past": { "m": "probudil", "f": "probudila", "n": "probudilo", "pl": "probudili" }
+      }
+    },
+    "bydlet": {
+      "translation": "to live, to reside",
+      "phonetic": "BID-let",
+      "ipa": "bɪdlɛt",
+      "pos": "verb",
+      "note": "Bydlet is where you live; žít is being alive.",
+      "forms": {
+        "present": { "já": "bydlím", "ty": "bydlíš", "on/ona/ono": "bydlí", "my": "bydlíme", "vy": "bydlíte", "oni": "bydlí" },
+        "past": { "m": "bydlel", "f": "bydlela", "n": "bydlelo", "pl": "bydleli" }
+      }
+    },
+    "žít": {
+      "translation": "to live, to be alive",
+      "phonetic": "zheet",
+      "ipa": "ʒiːt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "žiju", "ty": "žiješ", "on/ona/ono": "žije", "my": "žijeme", "vy": "žijete", "oni": "žijí" },
+        "past": { "m": "žil", "f": "žila", "n": "žilo", "pl": "žili" }
+      }
+    },
+    "stát": {
+      "translation": "to stand; to cost",
+      "phonetic": "staat",
+      "ipa": "staːt",
+      "pos": "verb",
+      "note": "Two meanings share one verb: 'most stojí' = the bridge stands, 'kolik to stojí?' = how much does it cost? With se it means to happen or to become.",
+      "forms": {
+        "present": { "já": "stojím", "ty": "stojíš", "on/ona/ono": "stojí", "my": "stojíme", "vy": "stojíte", "oni": "stojí" },
+        "past": { "m": "stál", "f": "stála", "n": "stálo", "pl": "stáli" }
+      },
+      "extra": ["stal", "stala", "stalo", "stali"]
+    },
+    "sedět": {
+      "translation": "to sit, to be sitting",
+      "phonetic": "SE-dyet",
+      "ipa": "sɛɟɛt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "sedím", "ty": "sedíš", "on/ona/ono": "sedí", "my": "sedíme", "vy": "sedíte", "oni": "sedí" },
+        "past": { "m": "seděl", "f": "seděla", "n": "sedělo", "pl": "seděli" }
+      }
+    },
+    "ležet": {
+      "translation": "to lie, to be lying",
+      "phonetic": "LE-zhet",
+      "ipa": "lɛʒɛt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "ležím", "ty": "ležíš", "on/ona/ono": "leží", "my": "ležíme", "vy": "ležíte", "oni": "leží" },
+        "past": { "m": "ležel", "f": "ležela", "n": "leželo", "pl": "leželi" }
+      }
+    },
+    "lehnout": {
+      "translation": "to lie down",
+      "phonetic": "LEH-noht",
+      "ipa": "lɛɦnou̯t",
+      "pos": "verb",
+      "forms": {
+        "future": { "já": "lehnu", "ty": "lehneš", "on/ona/ono": "lehne", "my": "lehneme", "vy": "lehnete", "oni": "lehnou" },
+        "past": { "m": "lehl", "f": "lehla", "n": "lehlo", "pl": "lehli" }
+      }
+    },
+    "dívat": {
+      "translation": "to look, to watch (with se)",
+      "phonetic": "DYEE-vat",
+      "ipa": "ɟiːvat",
+      "pos": "verb",
+      "note": "Always with se, and with na for what you look at: dívám se na televizi.",
+      "forms": {
+        "present": { "já": "dívám", "ty": "díváš", "on/ona/ono": "dívá", "my": "díváme", "vy": "díváte", "oni": "dívají" },
+        "past": { "m": "díval", "f": "dívala", "n": "dívalo", "pl": "dívali" }
+      }
+    },
+    "podívat": {
+      "translation": "to take a look (with se)",
+      "phonetic": "PO-dyee-vat",
+      "ipa": "pɔɟiːvat",
+      "pos": "verb",
+      "forms": {
+        "future": { "já": "podívám", "ty": "podíváš", "on/ona/ono": "podívá", "my": "podíváme", "vy": "podíváte", "oni": "podívají" },
+        "past": { "m": "podíval", "f": "podívala", "n": "podívalo", "pl": "podívali" }
+      }
+    },
+    "vidět": {
+      "translation": "to see",
+      "phonetic": "VI-dyet",
+      "ipa": "vɪɟɛt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "vidím", "ty": "vidíš", "on/ona/ono": "vidí", "my": "vidíme", "vy": "vidíte", "oni": "vidí" },
+        "past": { "m": "viděl", "f": "viděla", "n": "vidělo", "pl": "viděli" }
+      }
+    },
+    "slyšet": {
+      "translation": "to hear",
+      "phonetic": "SLI-shet",
+      "ipa": "slɪʃɛt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "slyším", "ty": "slyšíš", "on/ona/ono": "slyší", "my": "slyšíme", "vy": "slyšíte", "oni": "slyší" },
+        "past": { "m": "slyšel", "f": "slyšela", "n": "slyšelo", "pl": "slyšeli" }
+      }
+    },
+    "mluvit": {
+      "translation": "to speak, to talk",
+      "phonetic": "MLOO-vit",
+      "ipa": "mluvɪt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "mluvím", "ty": "mluvíš", "on/ona/ono": "mluví", "my": "mluvíme", "vy": "mluvíte", "oni": "mluví" },
+        "past": { "m": "mluvil", "f": "mluvila", "n": "mluvilo", "pl": "mluvili" },
+        "negative": { "on/ona/ono": "nemluví", "past m": "nemluvil" }
+      }
+    },
+    "říkat": {
+      "translation": "to say, to tell",
+      "phonetic": "RZHEE-kat",
+      "ipa": "r̝iːkat",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "říkám", "ty": "říkáš", "on/ona/ono": "říká", "my": "říkáme", "vy": "říkáte", "oni": "říkají" },
+        "past": { "m": "říkal", "f": "říkala", "n": "říkalo", "pl": "říkali" },
+        "negative": { "on/ona/ono": "neříká", "past m": "neříkal" }
+      }
+    },
+    "děkovat": {
+      "translation": "to thank",
+      "phonetic": "DYE-ko-vat",
+      "ipa": "ɟɛkɔvat",
+      "pos": "verb",
+      "note": "The person thanked takes the dative: děkuji vám.",
+      "forms": {
+        "present": { "já": "děkuji", "ty": "děkuješ", "on/ona/ono": "děkuje", "my": "děkujeme", "vy": "děkujete", "oni": "děkují" },
+        "past": { "m": "děkoval", "f": "děkovala", "n": "děkovalo", "pl": "děkovali" }
+      },
+      "extra": ["děkuju", "díky"]
+    },
+    "říct": {
+      "translation": "to say (once), to tell",
+      "phonetic": "rzheetst",
+      "ipa": "r̝iːtst",
+      "pos": "verb",
+      "note": "The perfective partner of říkat, with an irregular past: řekl, řekla, řekli.",
+      "forms": {
+        "future": { "já": "řeknu", "ty": "řekneš", "on/ona/ono": "řekne", "my": "řekneme", "vy": "řeknete", "oni": "řeknou" },
+        "past": { "m": "řekl", "f": "řekla", "n": "řeklo", "pl": "řekli" },
+        "imperative": { "ty": "řekni", "vy": "řekněte" }
+      }
+    },
+    "ptát": {
+      "translation": "to ask (with se)",
+      "phonetic": "ptaat",
+      "ipa": "ptaːt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "ptám", "ty": "ptáš", "on/ona/ono": "ptá", "my": "ptáme", "vy": "ptáte", "oni": "ptají" },
+        "past": { "m": "ptal", "f": "ptala", "n": "ptalo", "pl": "ptali" }
+      }
+    },
+    "zeptat": {
+      "translation": "to ask (once, with se)",
+      "phonetic": "ZEP-tat",
+      "ipa": "zɛptat",
+      "pos": "verb",
+      "forms": {
+        "future": { "já": "zeptám", "ty": "zeptáš", "on/ona/ono": "zeptá", "my": "zeptáme", "vy": "zeptáte", "oni": "zeptají" },
+        "past": { "m": "zeptal", "f": "zeptala", "n": "zeptalo", "pl": "zeptali" }
+      }
+    },
+    "odpovídat": {
+      "translation": "to answer, to reply",
+      "phonetic": "OD-po-vee-dat",
+      "ipa": "ɔtpɔviːdat",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "odpovídám", "ty": "odpovídáš", "on/ona/ono": "odpovídá", "my": "odpovídáme", "vy": "odpovídáte", "oni": "odpovídají" },
+        "past": { "m": "odpovídal", "f": "odpovídala", "n": "odpovídalo", "pl": "odpovídali" }
+      }
+    },
+    "odpovědět": {
+      "translation": "to answer (once)",
+      "phonetic": "OD-po-vye-dyet",
+      "ipa": "ɔtpɔvjɛɟɛt",
+      "pos": "verb",
+      "forms": {
+        "future": { "já": "odpovím", "ty": "odpovíš", "on/ona/ono": "odpoví", "my": "odpovíme", "vy": "odpovíte", "oni": "odpovědí" },
+        "past": { "m": "odpověděl", "f": "odpověděla", "n": "odpovědělo", "pl": "odpověděli" }
+      }
+    },
+    "volat": {
+      "translation": "to call, to shout",
+      "phonetic": "VO-lat",
+      "ipa": "vɔlat",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "volám", "ty": "voláš", "on/ona/ono": "volá", "my": "voláme", "vy": "voláte", "oni": "volají" },
+        "past": { "m": "volal", "f": "volala", "n": "volalo", "pl": "volali" }
+      }
+    },
+    "zavolat": {
+      "translation": "to call, to phone (once)",
+      "phonetic": "ZA-vo-lat",
+      "ipa": "zavɔlat",
+      "pos": "verb",
+      "forms": {
+        "future": { "já": "zavolám", "ty": "zavoláš", "on/ona/ono": "zavolá", "my": "zavoláme", "vy": "zavoláte", "oni": "zavolají" },
+        "past": { "m": "zavolal", "f": "zavolala", "n": "zavolalo", "pl": "zavolali" }
+      }
+    },
+    "chtít": {
+      "translation": "to want",
+      "phonetic": "khtyeet",
+      "ipa": "xciːt",
+      "pos": "verb",
+      "note": "Irregular. The conditional chtěl bych = I would like — the polite way to ask for anything.",
+      "forms": {
+        "present": { "já": "chci", "ty": "chceš", "on/ona/ono": "chce", "my": "chceme", "vy": "chcete", "oni": "chtějí" },
+        "past": { "m": "chtěl", "f": "chtěla", "n": "chtělo", "pl": "chtěli" },
+        "negative": { "on/ona/ono": "nechce", "past m": "nechtěl", "past f": "nechtěla" }
+      }
+    },
+    "moci": {
+      "translation": "to be able to, can",
+      "phonetic": "MO-tsi",
+      "ipa": "mɔtsɪ",
+      "pos": "verb",
+      "note": "Also written 'moct'. Ability or permission, as against muset (must).",
+      "forms": {
+        "present": { "já": "můžu", "ty": "můžeš", "on/ona/ono": "může", "my": "můžeme", "vy": "můžete", "oni": "můžou" },
+        "past": { "m": "mohl", "f": "mohla", "n": "mohlo", "pl": "mohli" },
+        "negative": { "past m": "nemohl", "past f": "nemohla", "on/ona/ono": "nemůže" }
+      },
+      "extra": ["moct", "mohu"]
+    },
+    "muset": {
+      "translation": "must, to have to",
+      "phonetic": "MOO-set",
+      "ipa": "musɛt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "musím", "ty": "musíš", "on/ona/ono": "musí", "my": "musíme", "vy": "musíte", "oni": "musí" },
+        "past": { "m": "musel", "f": "musela", "n": "muselo", "pl": "museli" }
+      }
+    },
+    "smět": {
+      "translation": "may, to be allowed to",
+      "phonetic": "smyet",
+      "ipa": "smjɛt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "smím", "ty": "smíš", "on/ona/ono": "smí", "my": "smíme", "vy": "smíte", "oni": "smí" },
+        "past": { "m": "směl", "f": "směla", "n": "smělo", "pl": "směli" },
+        "negative": { "on/ona/ono": "nesmí" }
+      }
+    },
+    "vědět": {
+      "translation": "to know (a fact)",
+      "phonetic": "VYE-dyet",
+      "ipa": "vjɛɟɛt",
+      "pos": "verb",
+      "note": "Vědět is knowing that something is so; znát is being acquainted with a person or place.",
+      "forms": {
+        "present": { "já": "vím", "ty": "víš", "on/ona/ono": "ví", "my": "víme", "vy": "víte", "oni": "vědí" },
+        "past": { "m": "věděl", "f": "věděla", "n": "vědělo", "pl": "věděli" }
+      }
+    },
+    "znát": {
+      "translation": "to know (a person or place)",
+      "phonetic": "znaat",
+      "ipa": "znaːt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "znám", "ty": "znáš", "on/ona/ono": "zná", "my": "známe", "vy": "znáte", "oni": "znají" },
+        "past": { "m": "znal", "f": "znala", "n": "znalo", "pl": "znali" }
+      }
+    },
+    "myslet": {
+      "translation": "to think",
+      "phonetic": "MIS-let",
+      "ipa": "mɪslɛt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "myslím", "ty": "myslíš", "on/ona/ono": "myslí", "my": "myslíme", "vy": "myslíte", "oni": "myslí" },
+        "past": { "m": "myslel", "f": "myslela", "n": "myslelo", "pl": "mysleli" }
+      }
+    },
+    "přemýšlet": {
+      "translation": "to think over, to ponder",
+      "phonetic": "PRZHE-meesh-let",
+      "ipa": "pr̝ɛmiːʃlɛt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "přemýšlím", "ty": "přemýšlíš", "on/ona/ono": "přemýšlí", "my": "přemýšlíme", "vy": "přemýšlíte", "oni": "přemýšlejí" },
+        "past": { "m": "přemýšlel", "f": "přemýšlela", "n": "přemýšlelo", "pl": "přemýšleli" }
+      }
+    },
+    "hledat": {
+      "translation": "to look for, to search",
+      "phonetic": "HLE-dat",
+      "ipa": "ɦlɛdat",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "hledám", "ty": "hledáš", "on/ona/ono": "hledá", "my": "hledáme", "vy": "hledáte", "oni": "hledají" },
+        "past": { "m": "hledal", "f": "hledala", "n": "hledalo", "pl": "hledali" }
+      }
+    },
+    "najít": {
+      "translation": "to find",
+      "phonetic": "NA-yeet",
+      "ipa": "najiːt",
+      "pos": "verb",
+      "forms": {
+        "future": { "já": "najdu", "ty": "najdeš", "on/ona/ono": "najde", "my": "najdeme", "vy": "najdete", "oni": "najdou" },
+        "past": { "m": "našel", "f": "našla", "n": "našlo", "pl": "našli" }
+      }
+    },
+    "kupovat": {
+      "translation": "to buy (regularly)",
+      "phonetic": "KOO-po-vat",
+      "ipa": "kupɔvat",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "kupuji", "ty": "kupuješ", "on/ona/ono": "kupuje", "my": "kupujeme", "vy": "kupujete", "oni": "kupují" },
+        "past": { "m": "kupoval", "f": "kupovala", "n": "kupovalo", "pl": "kupovali" }
+      },
+      "extra": ["kupuju"]
+    },
+    "koupit": {
+      "translation": "to buy (once)",
+      "phonetic": "KOH-pit",
+      "ipa": "kou̯pɪt",
+      "pos": "verb",
+      "forms": {
+        "future": { "já": "koupím", "ty": "koupíš", "on/ona/ono": "koupí", "my": "koupíme", "vy": "koupíte", "oni": "koupí" },
+        "past": { "m": "koupil", "f": "koupila", "n": "koupilo", "pl": "koupili" }
+      }
+    },
+    "prodávat": {
+      "translation": "to sell",
+      "phonetic": "PRO-daa-vat",
+      "ipa": "prɔdaːvat",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "prodávám", "ty": "prodáváš", "on/ona/ono": "prodává", "my": "prodáváme", "vy": "prodáváte", "oni": "prodávají" },
+        "past": { "m": "prodával", "f": "prodávala", "n": "prodávalo", "pl": "prodávali" }
+      }
+    },
+    "platit": {
+      "translation": "to pay; to be valid",
+      "phonetic": "PLA-tit",
+      "ipa": "placɪt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "platím", "ty": "platíš", "on/ona/ono": "platí", "my": "platíme", "vy": "platíte", "oni": "platí" },
+        "past": { "m": "platil", "f": "platila", "n": "platilo", "pl": "platili" },
+        "negative": { "past f": "neplatila", "on/ona/ono": "neplatí" }
+      }
+    },
+    "brát": {
+      "translation": "to take",
+      "phonetic": "braat",
+      "ipa": "braːt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "beru", "ty": "bereš", "on/ona/ono": "bere", "my": "bereme", "vy": "berete", "oni": "berou" },
+        "past": { "m": "bral", "f": "brala", "n": "bralo", "pl": "brali" }
+      }
+    },
+    "vzít": {
+      "translation": "to take (once)",
+      "phonetic": "vzeet",
+      "ipa": "vziːt",
+      "pos": "verb",
+      "note": "The perfective partner of brát, and completely irregular.",
+      "forms": {
+        "future": { "já": "vezmu", "ty": "vezmeš", "on/ona/ono": "vezme", "my": "vezmeme", "vy": "vezmete", "oni": "vezmou" },
+        "past": { "m": "vzal", "f": "vzala", "n": "vzalo", "pl": "vzali" },
+        "negative": { "on/ona/ono": "nevezme" }
+      }
+    },
+    "dávat": {
+      "translation": "to give, to put",
+      "phonetic": "DAA-vat",
+      "ipa": "daːvat",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "dávám", "ty": "dáváš", "on/ona/ono": "dává", "my": "dáváme", "vy": "dáváte", "oni": "dávají" },
+        "past": { "m": "dával", "f": "dávala", "n": "dávalo", "pl": "dávali" }
+      }
+    },
+    "dát": {
+      "translation": "to give, to put (once)",
+      "phonetic": "daat",
+      "ipa": "daːt",
+      "pos": "verb",
+      "note": "'Dát si' means to order or have (food): dal jsem si pivo.",
+      "forms": {
+        "future": { "já": "dám", "ty": "dáš", "on/ona/ono": "dá", "my": "dáme", "vy": "dáte", "oni": "dají" },
+        "past": { "m": "dal", "f": "dala", "n": "dalo", "pl": "dali" }
+      }
+    },
+    "hrát": {
+      "translation": "to play",
+      "phonetic": "hraat",
+      "ipa": "ɦraːt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "hraju", "ty": "hraješ", "on/ona/ono": "hraje", "my": "hrajeme", "vy": "hrajete", "oni": "hrají" },
+        "past": { "m": "hrál", "f": "hrála", "n": "hrálo", "pl": "hráli" }
+      }
+    },
+    "čekat": {
+      "translation": "to wait",
+      "phonetic": "CHE-kat",
+      "ipa": "tʃɛkat",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "čekám", "ty": "čekáš", "on/ona/ono": "čeká", "my": "čekáme", "vy": "čekáte", "oni": "čekají" },
+        "past": { "m": "čekal", "f": "čekala", "n": "čekalo", "pl": "čekali" }
+      }
+    },
+    "bolet": {
+      "translation": "to hurt, to ache",
+      "phonetic": "BO-let",
+      "ipa": "bɔlɛt",
+      "pos": "verb",
+      "note": "The body part is the subject and the person is the object: bolí mě hlava = my head hurts (literally 'the head hurts me').",
+      "forms": {
+        "present": { "on/ona/ono": "bolí", "oni": "bolí" },
+        "past": { "m": "bolel", "f": "bolela", "n": "bolelo", "pl": "bolely" }
+      }
+    },
+    "cítit": {
+      "translation": "to feel, to smell",
+      "phonetic": "TSEE-tit",
+      "ipa": "tsiːcɪt",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "cítím", "ty": "cítíš", "on/ona/ono": "cítí", "my": "cítíme", "vy": "cítíte", "oni": "cítí" },
+        "past": { "m": "cítil", "f": "cítila", "n": "cítilo", "pl": "cítili" }
+      }
+    },
+    "milovat": {
+      "translation": "to love",
+      "phonetic": "MI-lo-vat",
+      "ipa": "mɪlɔvat",
+      "pos": "verb",
+      "forms": {
+        "present": { "já": "miluji", "ty": "miluješ", "on/ona/ono": "miluje", "my": "milujeme", "vy": "milujete", "oni": "milují" },
+        "past": { "m": "miloval", "f": "milovala", "n": "milovalo", "pl": "milovali" }
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+[
+  {
+    "id": "01-michal-kuchar",
+    "file": "data/stories/a1/01-michal-kuchar.json",
+    "title": "Michal je kuchař v restauraci",
+    "level": "A1",
+    "sentences": 14,
+    "grammarFocus": ["present tense", "accusative case"]
+  },
+  {
+    "id": "02-eva-v-obchode",
+    "file": "data/stories/a1/02-eva-v-obchode.json",
+    "title": "Eva jde do obchodu",
+    "level": "A1",
+    "sentences": 14,
+    "grammarFocus": ["present tense", "genitive"]
+  },
+  {
+    "id": "03-tramvaji-do-centra",
+    "file": "data/stories/a1/03-tramvaji-do-centra.json",
+    "title": "Tramvají do centra",
+    "level": "A1",
+    "sentences": 14,
+    "grammarFocus": ["present tense", "instrumental"]
+  },
+  {
+    "id": "04-vikend-na-chate",
+    "file": "data/stories/a2/04-vikend-na-chate.json",
+    "title": "Víkend na chatě",
+    "level": "A2",
+    "sentences": 17,
+    "grammarFocus": ["past tense", "verbs of motion"]
+  },
+  {
+    "id": "05-u-doktora",
+    "file": "data/stories/a2/05-u-doktora.json",
+    "title": "Pavel jde k doktorce",
+    "level": "A2",
+    "sentences": 16,
+    "grammarFocus": ["past tense", "dative", "modal verbs"]
+  },
+  {
+    "id": "06-vylet-do-brna",
+    "file": "data/stories/a2/06-vylet-do-brna.json",
+    "title": "Výlet do Brna",
+    "level": "A2",
+    "sentences": 17,
+    "grammarFocus": ["past tense (we-form)", "prepositions"]
+  },
+  {
+    "id": "07-golem",
+    "file": "data/stories/b1/07-golem.json",
+    "title": "Golem",
+    "level": "B1",
+    "sentences": 25,
+    "grammarFocus": ["conditional", "relative clauses", "aspect"]
+  },
+  {
+    "id": "08-hledame-byt",
+    "file": "data/stories/b1/08-hledame-byt.json",
+    "title": "Hledáme byt v Praze",
+    "level": "B1",
+    "sentences": 25,
+    "grammarFocus": ["conditional", "relative clauses", "comparatives"]
+  }
+]

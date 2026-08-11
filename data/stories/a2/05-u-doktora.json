@@ -1,0 +1,24 @@
+{
+  "id": "05-u-doktora",
+  "title": "Pavel jde k doktorce",
+  "level": "A2",
+  "grammarFocus": ["past tense", "dative case", "modal verbs"],
+  "sentences": [
+    { "cs": "Pavel se v pondělí ráno probudil a cítil se špatně.", "en": "On Monday morning Pavel woke up and felt unwell." },
+    { "cs": "Bolela ho hlava a měl teplotu.", "en": "His head hurt and he had a temperature." },
+    { "cs": "Zavolal do práce a řekl, že nepřijde.", "en": "He called work and said that he would not come." },
+    { "cs": "Potom si udělal termín u doktorky.", "en": "Then he made an appointment with the doctor." },
+    { "cs": "V čekárně seděl skoro půl hodiny.", "en": "He sat in the waiting room for almost half an hour." },
+    { "cs": "Doktorka se ho zeptala, co ho bolí.", "en": "The doctor asked him what was hurting." },
+    { "cs": "„Bolí mě hlava a v noci jsem nemohl spát,“ odpověděl Pavel.", "en": "\"My head hurts and I could not sleep at night,\" Pavel answered." },
+    { "cs": "Doktorka mu změřila teplotu a poslechla plíce.", "en": "The doctor took his temperature and listened to his lungs." },
+    { "cs": "„Máte chřipku,“ řekla, „nic vážného.“", "en": "\"You have the flu,\" she said, \"nothing serious.\"" },
+    { "cs": "Napsala mu recept na léky.", "en": "She wrote him a prescription for medicine." },
+    { "cs": "„Musíte zůstat doma tři dny a hodně pít.“", "en": "\"You must stay at home for three days and drink plenty.\"" },
+    { "cs": "Pavel šel do lékárny vedle ordinace.", "en": "Pavel went to the pharmacy next to the surgery." },
+    { "cs": "Lékárnice mu dala léky a čaj s medem.", "en": "The pharmacist gave him medicine and tea with honey." },
+    { "cs": "Doma si lehl do postele a spal celé odpoledne.", "en": "At home he lay down in bed and slept the whole afternoon." },
+    { "cs": "Ve středu se cítil mnohem lépe.", "en": "On Wednesday he felt much better." },
+    { "cs": "Ve čtvrtek už mohl jít zase do práce.", "en": "On Thursday he could already go back to work." }
+  ]
+}

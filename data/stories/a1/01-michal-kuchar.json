@@ -1,0 +1,22 @@
+{
+  "id": "01-michal-kuchar",
+  "title": "Michal je kuchař v restauraci",
+  "level": "A1",
+  "grammarFocus": ["present tense", "accusative case"],
+  "sentences": [
+    { "cs": "Toto je příběh o Michalovi, který pracuje v restauraci.", "en": "This is a story about Michal, who works in a restaurant." },
+    { "cs": "Michal vstává každé ráno v šest hodin.", "en": "Michal gets up every morning at six o'clock." },
+    { "cs": "Udělá snídani a pije kávu.", "en": "He makes breakfast and drinks coffee." },
+    { "cs": "Do práce jede svým autem.", "en": "He drives to work in his car." },
+    { "cs": "Jeho práce začíná v půl osmé.", "en": "His work starts at half past seven." },
+    { "cs": "Michal je kuchař v restauraci.", "en": "Michal is a cook in a restaurant." },
+    { "cs": "Dělá jídlo pro hladové zákazníky.", "en": "He makes food for hungry customers." },
+    { "cs": "Restaurace je vždycky plná lidí.", "en": "The restaurant is always full of people." },
+    { "cs": "Michal vaří polévku, maso a zeleninu.", "en": "Michal cooks soup, meat and vegetables." },
+    { "cs": "Jeho kolega Petr dělá sladké dezerty.", "en": "His colleague Petr makes sweet desserts." },
+    { "cs": "Odpoledne pijí spolu malou kávu.", "en": "In the afternoon they drink a small coffee together." },
+    { "cs": "Večer je Michal velmi unavený.", "en": "In the evening Michal is very tired." },
+    { "cs": "Doma čte knihu a dívá se na televizi.", "en": "At home he reads a book and watches television." },
+    { "cs": "V deset hodin jde spát.", "en": "At ten o'clock he goes to bed." }
+  ]
+}
