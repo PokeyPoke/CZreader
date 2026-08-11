@@ -29,21 +29,26 @@ cleanup() {
 trap cleanup EXIT
 sleep 1
 
-"$CHROME" --headless=new --disable-gpu --no-sandbox \
-  --user-data-dir="$PROFILE" \
-  --virtual-time-budget=45000 \
-  --window-size=1200,1100 \
-  --dump-dom "http://localhost:$PORT/tests/smoke.html" >"$DUMP" 2>/dev/null &
-CHROME_PID=$!
+STATUS=0
+for SUITE in smoke speech; do
+  echo "=== tests/$SUITE.html ==="
+  PROFILE_N="$(mktemp -d)"
+  "$CHROME" --headless=new --disable-gpu --no-sandbox \
+    --user-data-dir="$PROFILE_N" \
+    --virtual-time-budget=45000 \
+    --window-size=1200,1100 \
+    --dump-dom "http://localhost:$PORT/tests/$SUITE.html" >"$DUMP" 2>/dev/null &
+  CHROME_PID=$!
 
-# --virtual-time-budget can outrun the wall clock; give it a hard ceiling.
-for _ in $(seq 1 60); do
-  kill -0 "$CHROME_PID" 2>/dev/null || break
-  sleep 1
-done
-kill "$CHROME_PID" 2>/dev/null
+  # --virtual-time-budget can outrun the wall clock; give it a hard ceiling.
+  for _ in $(seq 1 60); do
+    kill -0 "$CHROME_PID" 2>/dev/null || break
+    sleep 1
+  done
+  kill "$CHROME_PID" 2>/dev/null
+  rm -rf "$PROFILE_N" 2>/dev/null
 
-python3 - "$DUMP" <<'PY'
+  python3 - "$DUMP" <<'PYEOF'
 import html, re, sys
 
 dom = open(sys.argv[1], encoding='utf-8').read()
@@ -56,4 +61,8 @@ text = re.sub(r'<[^>]+>', '', match.group(1))
 print(html.unescape(text).strip())
 
 sys.exit(1 if ('FAIL' in text or 'THREW' in text) else 0)
-PY
+PYEOF
+  [ $? -ne 0 ] && STATUS=1
+  echo
+done
+exit $STATUS

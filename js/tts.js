@@ -90,17 +90,36 @@ export function speak(text, opts = {}) {
   utter.pitch = 1;
 
   if (opts.onstart) utter.addEventListener('start', opts.onstart);
+
+  // An utterance must settle exactly once. Engines keep a finished utterance in
+  // their queue after firing 'end', so the cancel() at the top of the *next*
+  // speak() also fires 'error: interrupted' on it. Without this guard the
+  // caller's onend ran twice per sentence, and the reader — which chains
+  // sentences from onend — spoke every sentence after the first one twice.
+  let settled = false;
+
   utter.addEventListener('end', () => {
+    if (settled) return;
+    settled = true;
     current = null;
     if (opts.onend) opts.onend();
   });
+
   utter.addEventListener('error', (e) => {
+    const deliberate = e.error === 'interrupted' || e.error === 'canceled';
     current = null;
-    // 'interrupted' and 'canceled' are the normal result of cancel(); only real
-    // failures are worth logging.
-    if (e.error && e.error !== 'interrupted' && e.error !== 'canceled') {
-      console.warn('Speech failed:', e.error);
+
+    // A deliberate cancellation is never a completion: either it is the stale
+    // event described above, or the user pressed stop. Continuing would restart
+    // playback they just stopped.
+    if (deliberate) {
+      settled = true;
+      return;
     }
+    if (settled) return;
+    settled = true;
+    console.warn('Speech failed:', e.error);
+    // A genuine failure still settles, so a caller chaining on onend cannot hang.
     if (opts.onend) opts.onend();
   });
 

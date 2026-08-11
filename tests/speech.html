@@ -1,0 +1,140 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Czech app — speech tests</title>
+<!--
+  Regression tests for read-aloud sentence chaining.
+
+  The Web Speech engine is replaced with a fake that models how real engines
+  actually behave, in particular that a finished utterance LINGERS in the
+  engine's queue after firing 'end'. A later cancel() therefore also fires
+  'error: interrupted' on it.
+
+  That combination used to invoke the caller's onend twice per sentence, so
+  every sentence after the first was read aloud twice.
+-->
+<style>
+  body { margin: 0; font: 13px/1.6 ui-monospace, Menlo, monospace; background: #14100E; color: #F1E7D9; }
+  #wrap { display: flex; gap: 16px; padding: 16px; align-items: flex-start; }
+  #out { white-space: pre; flex: 1; }
+  .p { color: #7FCB92; } .f { color: #E4472F; font-weight: 700; }
+  h1 { font-size: 15px; margin: 0 0 10px; letter-spacing: .1em; text-transform: uppercase; }
+  iframe { width: 390px; height: 700px; border: 1px solid #3A2F27; flex: none; }
+</style>
+<div id="wrap">
+  <div><h1>Read-aloud</h1><div id="out">running…</div></div>
+  <iframe id="f" src="about:blank" title="app under test"></iframe>
+</div>
+
+<script type="module">
+const f = document.getElementById('f');
+const out = document.getElementById('out');
+const results = [];
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+
+function check(ok, msg) {
+  results.push({ ok, msg });
+  out.innerHTML = results
+    .map((r) => `<span class="${r.ok ? 'p' : 'f'}">${r.ok ? 'PASS' : 'FAIL'}</span>  ${r.msg}`)
+    .join('\n');
+}
+
+/**
+ * Install a fake speech engine into the app's window.
+ * @param {boolean} linger keep utterances in the queue after 'end', the way
+ *        real engines do, so a later cancel() also fires 'error' on them
+ */
+function installFakeEngine(w, { linger = true } = {}) {
+  const spoken = [];
+  let queue = [];
+
+  class FakeUtterance extends w.EventTarget {
+    constructor(text) {
+      super();
+      this.text = text; this.voice = null; this.lang = ''; this.rate = 1; this.pitch = 1;
+    }
+  }
+
+  const engine = {
+    speaking: false, pending: false, paused: false,
+    getVoices: () => [{ lang: 'cs-CZ', name: 'Fake Zuzana', voiceURI: 'fake', default: true, localService: true }],
+    addEventListener() {}, removeEventListener() {},
+    speak(u) {
+      spoken.push(u.text);
+      queue.push(u);
+      setTimeout(() => {
+        const i = queue.indexOf(u);
+        if (i === -1) return;                 // cancelled before it finished
+        if (!linger) queue.splice(i, 1);
+        u.dispatchEvent(new Event('end'));
+      }, 50);
+    },
+    cancel() {
+      const dropped = queue;
+      queue = [];
+      dropped.forEach((u) => {
+        const e = new Event('error');
+        e.error = 'interrupted';
+        u.dispatchEvent(e);
+      });
+    },
+  };
+
+  Object.defineProperty(w, 'speechSynthesis', { value: engine, configurable: true });
+  Object.defineProperty(w, 'SpeechSynthesisUtterance', { value: FakeUtterance, configurable: true });
+  return spoken;
+}
+
+async function run() {
+  localStorage.clear();
+  localStorage.setItem('czs.settings', JSON.stringify({ placementDone: true, audio: true, theme: 'dark' }));
+
+  // Load the home screen first: it is the one route that does not touch tts,
+  // so the fake engine can be installed before anything reads the voice list.
+  f.src = '/#/';
+  await wait(2000);
+  const spoken = installFakeEngine(f.contentWindow, { linger: true });
+
+  f.contentWindow.location.hash = '#/story/01-michal-kuchar';
+  await wait(1800);
+
+  const d = f.contentDocument;
+  const sentences = d.querySelectorAll('.sentence').length;
+  const play = d.querySelector('.play-btn');
+  check(!!play, `the story has ${sentences} sentences and a play button`);
+
+  play.click();
+  await wait(3000);
+
+  const counts = new Map();
+  spoken.forEach((s) => counts.set(s, (counts.get(s) || 0) + 1));
+  const repeated = [...counts.entries()].filter(([, n]) => n > 1);
+
+  check(spoken.length === sentences,
+        `read-aloud speaks each sentence once: ${spoken.length} utterances for ${sentences} sentences`);
+  check(repeated.length === 0,
+        repeated.length
+          ? `${repeated.length} sentence(s) spoken more than once, e.g. "${repeated[0][0].slice(0, 40)}" ×${repeated[0][1]}`
+          : 'no sentence is spoken twice');
+  check(spoken[0] === d.querySelectorAll('.sentence')[0].textContent,
+        'playback starts at the first sentence');
+
+  // Stopping must not advance to the next sentence. Only growth AFTER the stop
+  // counts — sentences already under way when stop is pressed are legitimate.
+  d.querySelector('.play-btn').click();     // start again
+  await wait(80);
+  const atStop = spoken.length;
+  d.querySelector('.play-btn').click();     // stop
+  await wait(1000);
+  check(spoken.length === atStop,
+        `nothing is spoken after pressing stop (${spoken.length - atStop} spoken afterwards)`);
+
+  const passed = results.filter((r) => r.ok).length;
+  out.innerHTML += `\n\n<b>${passed}/${results.length} passed</b>`;
+  document.title = passed === results.length ? 'ALL PASS' : 'FAILURES';
+}
+
+run().catch((err) => {
+  out.innerHTML += `\n\n<span class="f">THREW: ${err.message}</span>\n${err.stack}`;
+  document.title = 'THREW';
+});
+</script>
