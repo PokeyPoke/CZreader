@@ -12,6 +12,7 @@ import * as router from './router.js';
 import * as dict from './dict.js';
 import * as tts from './tts.js';
 import * as wordpanel from './wordpanel.js';
+import { makeWordTapHandler } from './wordtap.js';
 import { tokenize, normalize } from './tokenizer.js';
 import { getStatus, getGame, setGame } from './store.js';
 
@@ -20,11 +21,13 @@ const CHAPTER_FILE = 'data/adventure/karel-iv.json';
 let chapter = null;
 
 /**
- * Renders Czech text with tappable words, shared with the reader's approach.
+ * Renders Czech text with tappable words, shared with the reader's approach:
+ * a first tap speaks the word, a second tap on it opens the info panel.
  * @param {string} tag e.g. 'p.adv-scene' — choices need a span, since a <p>
  *                     inside a <button> is invalid HTML.
+ * @param {(node:HTMLElement, surface:string) => void} onWordTap
  */
-function czechText(text, tag, onChange) {
+function czechText(text, tag, onWordTap) {
   const p = el(tag, { lang: 'cs' });
 
   for (const token of tokenize(text)) {
@@ -45,15 +48,17 @@ function czechText(text, tag, onChange) {
         'data-status': String(getStatus(lemma)),
         text: token.text,
         on: {
+          // Words inside a choice sit inside a <button>; stop the tap from
+          // also firing that choice.
           click: (e) => {
             e.stopPropagation();
-            wordpanel.show(token.text, { onChange });
+            onWordTap(e.currentTarget, token.text);
           },
           keydown: (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
               e.preventDefault();
               e.stopPropagation();
-              wordpanel.show(token.text, { onChange });
+              onWordTap(e.currentTarget, token.text);
             }
           },
         },
@@ -125,10 +130,11 @@ export async function adventureScreen() {
       document.querySelectorAll(`.w[data-lemma="${CSS.escape(lemma)}"]`)
         .forEach((n) => { n.dataset.status = String(status); });
     };
+    const onWordTap = makeWordTapHandler({ onChange: repaintStatuses });
 
     const scene = el('div');
     node.text.forEach((paragraph, i) => {
-      scene.append(czechText(paragraph, 'p.adv-scene', repaintStatuses));
+      scene.append(czechText(paragraph, 'p.adv-scene', onWordTap));
       if (showEnglish && node.en && node.en[i]) {
         scene.append(el('p.translation', { text: node.en[i] }));
       }
@@ -142,7 +148,7 @@ export async function adventureScreen() {
         el('button.choice', {
           on: { click: () => go(choice) },
         }, [
-          czechText(choice.cs, 'span.choice-cs', repaintStatuses),
+          czechText(choice.cs, 'span.choice-cs', onWordTap),
           showEnglish ? el('span.choice-en', { text: choice.en }) : null,
         ])
       );

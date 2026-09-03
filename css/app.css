@@ -582,6 +582,12 @@ a { color: var(--carmine); }
   color: #fff;
   box-shadow: none !important;
 }
+/* First tap of the two-step gesture: word is speaking, tap again for details. */
+.w.is-pending {
+  background: var(--brass) !important;
+  color: var(--paper);
+  box-shadow: none !important;
+}
 
 .translation {
   font-family: var(--sans);

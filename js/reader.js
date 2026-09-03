@@ -12,6 +12,7 @@ import * as content from './content.js';
 import * as dict from './dict.js';
 import * as tts from './tts.js';
 import * as wordpanel from './wordpanel.js';
+import { makeWordTapHandler } from './wordtap.js';
 import { tokenize, normalize } from './tokenizer.js';
 import { getStatus, setProgress, getSettings, STATUS } from './store.js';
 
@@ -90,21 +91,19 @@ export async function readerScreen({ id }) {
   const sentenceNodes = [];
   const translationNodes = [];
 
-  function onWordTap(node, surface) {
-    document.querySelectorAll('.w.is-active').forEach((n) => n.classList.remove('is-active'));
-    node.classList.add('is-active');
-
-    const opened = wordpanel.show(surface, {
-      onChange: (lemma, status) => {
-        // Repaint every occurrence of the word across the whole story, not just
-        // the one tapped — the same word recurs and should update everywhere.
-        body.querySelectorAll(`.w[data-lemma="${CSS.escape(lemma)}"]`)
-          .forEach((n) => { n.dataset.status = String(status); });
-      },
-      onClose: () => node.classList.remove('is-active'),
-    });
-    if (!opened) node.classList.remove('is-active');
-  }
+  // Tapping a word while the whole story is being read aloud stops that
+  // playback first — otherwise the two speech requests would race.
+  const onWordTap = makeWordTapHandler({
+    onChange: (lemma, status) => {
+      // Repaint every occurrence of the word across the whole story, not just
+      // the one tapped — the same word recurs and should update everywhere.
+      body.querySelectorAll(`.w[data-lemma="${CSS.escape(lemma)}"]`)
+        .forEach((n) => { n.dataset.status = String(status); });
+    },
+    onBeforeSpeak: () => {
+      if (playback) { stopPlayback(); setPlayIcon(false); }
+    },
+  });
 
   story.sentences.forEach((s, i) => {
     const node = renderSentence(s.cs, onWordTap);

@@ -9,7 +9,7 @@
  * activate, so a stale version can never linger.
  */
 
-const CACHE = 'czs-v2';
+const CACHE = 'czs-v3';
 
 const PRECACHE = [
   './',
@@ -30,6 +30,7 @@ const PRECACHE = [
   'js/home.js',
   'js/reader.js',
   'js/wordpanel.js',
+  'js/wordtap.js',
   'js/saved.js',
   'js/flashcards.js',
   'js/worksheets.js',

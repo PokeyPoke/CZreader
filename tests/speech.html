@@ -128,6 +128,37 @@ async function run() {
   check(spoken.length === atStop,
         `nothing is spoken after pressing stop (${spoken.length - atStop} spoken afterwards)`);
 
+  /* --------------------------------------------- two-step word tap gesture */
+  // First tap speaks the word and must NOT open the panel; second tap on the
+  // same word opens it. A tap on a different word speaks that one instead of
+  // opening anything.
+  const beforeTaps = spoken.length;
+  const words = [...d.querySelectorAll('.w[data-lemma]')];
+  const first = words.find((w) => w.dataset.lemma === 'vstávat');
+  const other = words.find((w) => w.dataset.lemma === 'restaurace');
+
+  first.click();
+  await wait(120);
+  check(!d.querySelector('.sheet'), 'first tap speaks the word without opening the panel');
+  check(first.classList.contains('is-pending'), 'the tapped word shows the "tap again" highlight');
+  check(spoken.length === beforeTaps + 1 && spoken[spoken.length - 1] === 'vstává',
+        'first tap speaks the tapped surface form');
+
+  other.click();
+  await wait(120);
+  check(!d.querySelector('.sheet'), 'tapping a different word speaks it instead of opening a panel');
+  check(!first.classList.contains('is-pending') && other.classList.contains('is-pending'),
+        'the pending highlight moves to the newly tapped word');
+
+  other.click();
+  await wait(200);
+  check(!!d.querySelector('.sheet'), 'a second tap on the same (still-pending) word opens the panel');
+  check(d.querySelector('.word-lemma')?.textContent === 'restaurace',
+        'the panel shown is for the word that was tapped twice');
+
+  d.querySelector('.scrim').click();
+  await wait(200);
+
   const passed = results.filter((r) => r.ok).length;
   out.innerHTML += `\n\n<b>${passed}/${results.length} passed</b>`;
   document.title = passed === results.length ? 'ALL PASS' : 'FAILURES';
