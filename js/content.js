@@ -126,3 +126,32 @@ export async function allComprehension() {
   }
   return out;
 }
+
+/**
+ * Find one story sentence containing each lemma, so the gap-fill uses Czech the
+ * user has actually read rather than invented example sentences.
+ * @returns {Promise<Map<string, {cs:string, en:string, surface:string}>>}
+ */
+export async function findSentences(lemmas) {
+  const wanted = new Set(lemmas);
+  const found = new Map();
+
+  for (const meta of catalogSync()) {
+    if (found.size === wanted.size) break;
+    let story;
+    try {
+      story = await loadStory(meta.id);
+    } catch {
+      continue; // a missing story should not sink the whole worksheet
+    }
+    for (const sentence of story.sentences) {
+      for (const token of tokenize(sentence.cs)) {
+        if (token.type !== 'word') continue;
+        const lemma = dict.lemmaOf(normalize(token.text));
+        if (!lemma || !wanted.has(lemma) || found.has(lemma)) continue;
+        found.set(lemma, { cs: sentence.cs, en: sentence.en, surface: token.text });
+      }
+    }
+  }
+  return found;
+}

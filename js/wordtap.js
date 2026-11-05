@@ -16,9 +16,11 @@ import * as wordpanel from './wordpanel.js';
  *   wordpanel.show, so callers can repaint every occurrence of a word
  * @param {() => void} [opts.onBeforeSpeak] called just before the first tap
  *   speaks — e.g. so the reader can stop whole-story playback first
+ * @param {(node:HTMLElement) => ({cs:string,en:string}|null)} [opts.contextOf]
+ *   the sentence a tapped word sits in, remembered for flashcards
  * @returns {(node:HTMLElement, surface:string) => void} a click/keydown handler
  */
-export function makeWordTapHandler({ onChange, onBeforeSpeak } = {}) {
+export function makeWordTapHandler({ onChange, onBeforeSpeak, contextOf } = {}) {
   let pending = null;
 
   function clearPending() {
@@ -31,8 +33,10 @@ export function makeWordTapHandler({ onChange, onBeforeSpeak } = {}) {
     document.querySelectorAll('.w.is-active').forEach((n) => n.classList.remove('is-active'));
     node.classList.add('is-active');
 
+    const ctx = contextOf ? contextOf(node) : null;
     const opened = wordpanel.show(surface, {
       onChange,
+      context: ctx ? { ...ctx, surface } : null,
       onClose: () => node.classList.remove('is-active'),
     });
     if (!opened) node.classList.remove('is-active');

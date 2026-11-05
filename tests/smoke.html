@@ -88,9 +88,39 @@ async function run() {
   check([...d.querySelectorAll('.w[data-lemma="vstávat"]')].every((n) => n.dataset.status === '1'),
         'every occurrence of the word repaints across the whole story');
 
-  /* -------------------------------------------- level-scaled reading aids */
+  /* ------------------------------------------- looking up saves the word */
   d.querySelector('.scrim').click();
   await wait(250);
+  const fresh = [...d.querySelectorAll('.w[data-lemma="kuchař"]')][0];
+  check(fresh?.dataset.status === '0', 'an unsaved word starts blue (New)');
+  fresh.click();
+  await wait(400);
+  let saved = JSON.parse(localStorage.getItem('czs.words'))['kuchař'];
+  check(saved?.status === 1, 'looking a word up saves it as Learning automatically');
+  check(saved?.ctx?.cs?.includes(fresh.textContent) && !!saved?.ctx?.en,
+        `the sentence it was met in is remembered for flashcards ("${saved?.ctx?.cs}")`);
+  check(!!d.querySelector('.word-saved-note'), 'the panel says the word was saved');
+  check([...d.querySelectorAll('.w[data-lemma="kuchař"]')].every((n) => n.dataset.status === '1'),
+        'auto-saving repaints every occurrence');
+  d.querySelector('.scrim').click();
+  await wait(250);
+
+  /* ---------------------------------------------------- finishing a story */
+  const blue = new Set([...d.querySelectorAll('.w[data-lemma][data-status="0"]')].map((n) => n.dataset.lemma));
+  const finishBtn = d.querySelector('.finish .btn');
+  check(blue.size > 0 && finishBtn?.textContent.includes(`Mark ${blue.size} as known`),
+        `the finish step offers to mark the ${blue.size} untouched words known`);
+  finishBtn.click();
+  await wait(300);
+  const afterFinish = JSON.parse(localStorage.getItem('czs.words'));
+  check([...blue].every((l) => afterFinish[l]?.status === 2), 'finishing marks every untouched word Known');
+  check(afterFinish['kuchař'].status === 1 && afterFinish['vstávat'].status === 1,
+        'words you looked up stay Learning');
+  check(d.querySelectorAll('.w[data-lemma][data-status="0"]').length === 0, 'no blue words remain on the page');
+  check(JSON.parse(localStorage.getItem('czs.progress'))['01-michal-kuchar']?.furthest === 13,
+        'finishing records the story as read');
+
+  /* -------------------------------------------- level-scaled reading aids */
   const before = d.querySelectorAll('.translation').length;
   d.querySelector('.toggle-chip').click();
   await wait(250);
@@ -103,6 +133,7 @@ async function run() {
 
   /* ------------------------------------------- levels and the readout */
   d = await go('/', 1600);
+  check(/streak/.test(d.querySelector('.today-streak')?.textContent || ''), 'home shows the daily streak');
   const label = d.querySelector('.readout-label')?.textContent || '';
   check(/%\s*known/.test(label), `home shows the difficulty readout: "${label}"`);
   check(parseInt(label, 10) > 0, 'known words raise the percentage above zero');
@@ -119,11 +150,40 @@ async function run() {
   d.querySelector('.btn').click();
   await wait(250);
   check(!!d.querySelector('.card-back'), 'reveal shows the answer');
+  check(!!d.querySelector('.card-context-cs mark'), 'the card shows the word in a story sentence');
   const boxBefore = JSON.parse(localStorage.getItem('czs.words'))[face]?.box;
-  [...d.querySelectorAll('.btn')].find((b) => /Got it/.test(b.textContent)).click();
+  [...d.querySelectorAll('.btn')].find((b) => /Good/.test(b.textContent)).click();
   await wait(300);
   const boxAfter = JSON.parse(localStorage.getItem('czs.words'))[face]?.box;
-  check(boxAfter === boxBefore + 1, `"Got it" promotes the Leitner box (${boxBefore} → ${boxAfter})`);
+  check(boxAfter === boxBefore + 1, `"Good" promotes the Leitner box (${boxBefore} → ${boxAfter})`);
+
+  const left = () => parseInt(d.querySelector('.card-progress').textContent, 10);
+  const leftBefore = left();
+  const missedFace = d.querySelector('.card-face')?.textContent;
+  d.querySelector('.btn').click();
+  await wait(250);
+  [...d.querySelectorAll('.btn')].find((b) => b.textContent === 'Again').click();
+  await wait(300);
+  check(left() === leftBefore, `"Again" sends the card to the back of this session (${leftBefore} left still)`);
+  check(JSON.parse(localStorage.getItem('czs.words'))[missedFace]?.box === 1, '"Again" resets the box to 1');
+
+  [...d.querySelectorAll('.chip')].find((c) => /English → Czech/.test(c.textContent)).click();
+  await wait(250);
+  check(!!d.querySelector('.card-gap') && !!d.querySelector('.card-context-en'),
+        'English → Czech gaps the word in its sentence so you produce the right form');
+
+  /* ---------------------------------------------- grading and graduation */
+  const store = await import('../js/store.js');
+  const now = Date.now();
+  const ws = JSON.parse(localStorage.getItem('czs.words'));
+  ws['test-top'] = { status: 1, added: now, box: 6, due: now };
+  ws['test-easy'] = { status: 1, added: now, box: 1, due: now };
+  localStorage.setItem('czs.words', JSON.stringify(ws));
+  check(store.reviewWord('test-easy', 'easy').box === 3, '"Easy" jumps two boxes');
+  const grad = store.reviewWord('test-top', 'good');
+  check(grad.graduated && grad.status === 2, 'a pass from the top box graduates the word to Known');
+  store.removeWord('test-top'); store.removeWord('test-easy');
+  check(store.streak() >= 1 && store.todayActivity().reviews >= 2, 'reviews count toward today and the streak');
 
   /* -------------------------------------------------------- worksheets */
   d = await go('/#/worksheet', 1500);

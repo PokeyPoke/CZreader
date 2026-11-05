@@ -85,8 +85,9 @@ export function speak(text, opts = {}) {
   const utter = new SpeechSynthesisUtterance(text);
   utter.voice = voice;
   utter.lang = LANG;
-  // Slightly under natural pace: learners need the word boundaries.
-  utter.rate = opts.rate ?? 0.85;
+  // The user's chosen pace (Settings); the default sits slightly under natural
+  // speed because learners need to hear the word boundaries.
+  utter.rate = opts.rate ?? getSettings().speechRate ?? 0.85;
   utter.pitch = 1;
 
   if (opts.onstart) utter.addEventListener('start', opts.onstart);

@@ -16,6 +16,7 @@ const KEYS = {
   progress: 'czs.progress',
   settings: 'czs.settings',
   game: 'czs.game',
+  activity: 'czs.activity',
 };
 
 export const STATUS = { NEW: 0, LEARNING: 1, KNOWN: 2 };
@@ -28,10 +29,19 @@ const DEFAULT_SETTINGS = {
   sentenceTranslations: null,
   placementDone: false,
   suggestedLevel: null,
+  // Speech rate for every Czech utterance. 0.85 keeps word boundaries audible.
+  speechRate: 0.85,
+  // Opening a word's details is a strong signal you don't know it yet, so a
+  // NEW word you look up is saved as LEARNING (and becomes a flashcard).
+  autoSaveLookups: true,
 };
 
-/** Leitner intervals in days, indexed by box number (1-5). */
-export const LEITNER_DAYS = [null, 1, 2, 4, 8, 16];
+/**
+ * Leitner intervals in days, indexed by box number (1-6). A correct answer on
+ * a card already in the top box graduates the word to KNOWN — about two months
+ * of successful spaced recall — so flashcard work feeds the reading readouts.
+ */
+export const LEITNER_DAYS = [null, 1, 2, 4, 8, 16, 32];
 
 const DAY_MS = 86400000;
 
@@ -62,7 +72,7 @@ function write(key, value) {
 
 /* ---------------------------------------------------------------- words --- */
 
-/** @returns {Record<string, {status:number, added:number, box:number, due:number}>} */
+/** @returns {Record<string, {status:number, added:number, box:number, due:number, ctx?:{cs:string,en:string,surface:string}}>} */
 export function allWords() {
   return read(KEYS.words, {});
 }
@@ -102,6 +112,39 @@ export function setStatus(lemma, status) {
   return words[lemma];
 }
 
+/**
+ * Remember the sentence a word was first met in, so flashcards can show it in
+ * context. The first encounter wins; later ones never overwrite it.
+ */
+export function setContext(lemma, ctx) {
+  if (!ctx || !ctx.cs) return;
+  const words = allWords();
+  const w = words[lemma];
+  if (!w || w.ctx) return;
+  w.ctx = { cs: ctx.cs, en: ctx.en || '', surface: ctx.surface || lemma };
+  write(KEYS.words, words);
+}
+
+/**
+ * Mark every given lemma KNOWN in one write, skipping words already saved as
+ * NEW/LEARNING — only untouched (never-saved) words are promoted. Used when
+ * finishing a story: words you read past without looking up are words you know.
+ * @returns {number} how many words were marked
+ */
+export function markUntouchedKnown(lemmas) {
+  const words = allWords();
+  const now = Date.now();
+  const maxBox = LEITNER_DAYS.length - 1;
+  let n = 0;
+  for (const lemma of new Set(lemmas)) {
+    if (!lemma || words[lemma]) continue;
+    words[lemma] = { status: STATUS.KNOWN, added: now, box: maxBox, due: now };
+    n++;
+  }
+  if (n) write(KEYS.words, words);
+  return n;
+}
+
 export function removeWord(lemma) {
   const words = allWords();
   delete words[lemma];
@@ -125,22 +168,89 @@ export function upcomingWords(now = Date.now()) {
 }
 
 /**
- * Record a flashcard answer. Correct promotes one box (capped), incorrect drops
- * straight back to box 1 — the standard Leitner rule, which deliberately makes
- * forgetting expensive so the word returns tomorrow.
+ * Record a flashcard answer.
+ *
+ *   'again' — back to box 1: forgetting is expensive, the word returns tomorrow
+ *   'good'  — up one box
+ *   'easy'  — up two boxes, for words that were never really in doubt
+ *
+ * A pass on a card already in the top box graduates the word to KNOWN.
+ * Booleans are accepted for compatibility (true = good, false = again).
+ *
+ * @param {string} lemma
+ * @param {'again'|'good'|'easy'|boolean} grade
+ * @returns {(object & {graduated?:boolean})|null}
  */
-export function reviewWord(lemma, correct, now = Date.now()) {
+export function reviewWord(lemma, grade, now = Date.now()) {
   const words = allWords();
   const w = words[lemma];
   if (!w) return null;
+  if (grade === true) grade = 'good';
+  if (grade === false) grade = 'again';
 
   const maxBox = LEITNER_DAYS.length - 1;
-  w.box = correct ? Math.min((w.box || 1) + 1, maxBox) : 1;
+  const box = w.box || 1;
+  let graduated = false;
+
+  if (grade === 'again') {
+    w.box = 1;
+  } else if (box >= maxBox) {
+    w.box = maxBox;
+    w.status = STATUS.KNOWN;
+    graduated = true;
+  } else {
+    w.box = Math.min(box + (grade === 'easy' ? 2 : 1), maxBox);
+  }
   w.due = now + LEITNER_DAYS[w.box] * DAY_MS;
-  if (correct && w.status === STATUS.NEW) w.status = STATUS.LEARNING;
+  if (grade !== 'again' && w.status === STATUS.NEW) w.status = STATUS.LEARNING;
 
   write(KEYS.words, words);
-  return w;
+  logActivity('reviews');
+  return { ...w, graduated };
+}
+
+/* ------------------------------------------------------------- activity --- */
+
+/** Local calendar date as YYYY-MM-DD — a streak should follow the user's day. */
+function dayKey(t = Date.now()) {
+  const d = new Date(t);
+  const pad = (n) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}
+
+export function allActivity() {
+  return read(KEYS.activity, {});
+}
+
+/** Count something done today: 'reviews', 'stories' or 'lookups'. */
+export function logActivity(kind, n = 1, now = Date.now()) {
+  const activity = allActivity();
+  const key = dayKey(now);
+  const day = activity[key] || {};
+  day[kind] = (day[kind] || 0) + n;
+  activity[key] = day;
+  write(KEYS.activity, activity);
+}
+
+export function todayActivity(now = Date.now()) {
+  return allActivity()[dayKey(now)] || {};
+}
+
+/**
+ * Consecutive days with any activity, ending today — or yesterday, so the
+ * streak doesn't read zero first thing in the morning before you've started.
+ */
+export function streak(now = Date.now()) {
+  const activity = allActivity();
+  // Step by calendar day, not by 24h, so a DST change can't skip or repeat one.
+  const d = new Date(now);
+  if (!activity[dayKey(d)]) d.setDate(d.getDate() - 1);
+  let n = 0;
+  while (activity[dayKey(d)]) {
+    n++;
+    d.setDate(d.getDate() - 1);
+  }
+  return n;
 }
 
 /* ------------------------------------------------------------- progress --- */
@@ -203,6 +313,7 @@ export function exportAll() {
     progress: allProgress(),
     settings: getSettings(),
     game: getGame(),
+    activity: allActivity(),
   };
 }
 
@@ -232,6 +343,7 @@ export function importAll(data) {
   if (data.progress && typeof data.progress === 'object') write(KEYS.progress, data.progress);
   if (data.settings && typeof data.settings === 'object') write(KEYS.settings, data.settings);
   if (data.game && typeof data.game === 'object') write(KEYS.game, data.game);
+  if (data.activity && typeof data.activity === 'object') write(KEYS.activity, data.activity);
 
   return {
     ok: true,

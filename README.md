@@ -28,6 +28,21 @@ subdirectory. `.nojekyll` stops GitHub's Jekyll step from touching the files.
 **After any change to a precached file, bump `CACHE` in `sw.js`.** Otherwise
 returning visitors keep the old version from their cache.
 
+## How the learning loop works
+
+1. **Read.** Tap once to hear a word, twice for its details. Opening a word's
+   details saves it as *Learning* (switchable in Settings), along with the
+   sentence you met it in.
+2. **Finish.** At the end of a story, mark the words still blue as *Known* —
+   you read past them without needing help. This keeps every story's
+   "% known" readout honest without tapping easy words one by one.
+3. **Review.** Flashcards show each word in its sentence; English → Czech gaps
+   it so you produce the right form. Grade *Again / Good / Easy*. Missed cards
+   come back until you get them that session. Boxes reappear after 1, 2, 4, 8,
+   16 and 32 days, and a pass from the top box graduates the word to *Known*.
+4. **Repeat daily.** The home screen shows a streak and today's goal: finish a
+   story, clear the due cards.
+
 ## Turn on Czech audio
 
 Speech uses the device's own Czech voice. On iPhone:

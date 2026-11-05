@@ -8,7 +8,7 @@
 import { el, icon, esc } from './ui.js';
 import * as dict from './dict.js';
 import * as tts from './tts.js';
-import { getStatus, setStatus, getSettings, STATUS } from './store.js';
+import { getStatus, setStatus, setContext, getSettings, logActivity, STATUS } from './store.js';
 
 /**
  * Czech case names with their question words — the question is how the cases
@@ -120,7 +120,8 @@ function formsFor(entry, matchSurface) {
 /**
  * Open the word panel.
  * @param {string} surface the word as it appeared on the page
- * @param {{onChange?:(lemma:string,status:number)=>void, onClose?:Function}} [opts]
+ * @param {{onChange?:(lemma:string,status:number)=>void, onClose?:Function,
+ *          context?:{cs:string,en:string,surface:string}|null}} [opts]
  * @returns {boolean} false when the word is not in the dictionary
  */
 export function show(surface, opts = {}) {
@@ -132,6 +133,16 @@ export function show(surface, opts = {}) {
   const { lemma, entry } = found;
   const tapped = surface.toLocaleLowerCase('cs-CZ');
   const settings = getSettings();
+
+  // Looking a word up means you didn't know it: save it straight to your list
+  // so it turns up in flashcards, rather than relying on a second tap.
+  let autoSaved = false;
+  if (settings.autoSaveLookups && getStatus(lemma) === STATUS.NEW) {
+    setStatus(lemma, STATUS.LEARNING);
+    autoSaved = true;
+    logActivity('lookups');
+  }
+  if (opts.context) setContext(lemma, opts.context);
 
   const scrim = el('div.scrim', { on: { click: () => close() } });
   const sheet = el('section.sheet', {
@@ -206,6 +217,12 @@ export function show(surface, opts = {}) {
   }
   paintStatus();
   sheet.append(statusRow);
+  if (autoSaved) {
+    sheet.append(el('p.word-saved-note', {
+      text: 'Saved as Learning — it will come up in flashcards. Tap Known if you only needed a reminder.',
+    }));
+    if (opts.onChange) opts.onChange(lemma, STATUS.LEARNING);
+  }
 
   /* Expandable full-forms table */
   const formsNode = formsFor(entry, tapped);

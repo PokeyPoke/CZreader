@@ -113,6 +113,46 @@ export async function settingsScreen() {
         !tts.hasVoice()
       ),
 
+      tts.hasVoice()
+        ? el('div.setting', {}, [
+            el('div.setting-main', {}, [
+              el('div.setting-label', { text: 'Speaking pace' }),
+              el('div.setting-desc', {
+                text: 'Slow helps you catch every ending; work up to Natural so real Czech doesn\'t catch you out.',
+              }),
+            ]),
+          ])
+        : null,
+      tts.hasVoice()
+        ? el('div.filter-row', {}, [
+            ...[
+              [0.65, 'Slow'],
+              [0.85, 'Learner'],
+              [1, 'Natural'],
+            ].map(([value, label]) =>
+              el('button.chip', {
+                'aria-pressed': settings.speechRate === value ? 'true' : 'false',
+                text: label,
+                on: {
+                  click: () => {
+                    setSetting('speechRate', value);
+                    tts.speak('Dobrý den, jak se máte?');
+                    settingsScreen();
+                  },
+                },
+              })
+            ),
+          ])
+        : null,
+
+      toggle(
+        'Save words I look up',
+        'Opening a word\'s details adds it to your list as Learning, so it becomes a flashcard.',
+        'autoSaveLookups',
+        settings.autoSaveLookups,
+        (v) => setSetting('autoSaveLookups', v)
+      ),
+
       toggle(
         'Show phonetic spelling',
         'Display the pronunciation guide and IPA in the word panel.',

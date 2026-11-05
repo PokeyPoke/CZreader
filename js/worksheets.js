@@ -11,7 +11,6 @@ import { el, render, topbar, toast, icon } from './ui.js';
 import * as router from './router.js';
 import * as dict from './dict.js';
 import * as content from './content.js';
-import { tokenize, normalize } from './tokenizer.js';
 import { allWords, dueWords, STATUS } from './store.js';
 
 const SOURCES = [
@@ -50,34 +49,6 @@ function shuffle(list) {
   return out;
 }
 
-/**
- * Find one story sentence containing each lemma, so the gap-fill uses Czech the
- * user has actually read rather than invented example sentences.
- * @returns {Promise<Map<string, {cs:string, en:string, surface:string}>>}
- */
-async function findSentences(lemmas) {
-  const wanted = new Set(lemmas);
-  const found = new Map();
-
-  for (const meta of content.catalogSync()) {
-    if (found.size === wanted.size) break;
-    let story;
-    try {
-      story = await content.loadStory(meta.id);
-    } catch {
-      continue; // a missing story should not sink the whole worksheet
-    }
-    for (const sentence of story.sentences) {
-      for (const token of tokenize(sentence.cs)) {
-        if (token.type !== 'word') continue;
-        const lemma = dict.lemmaOf(normalize(token.text));
-        if (!lemma || !wanted.has(lemma) || found.has(lemma)) continue;
-        found.set(lemma, { cs: sentence.cs, en: sentence.en, surface: token.text });
-      }
-    }
-  }
-  return found;
-}
 
 /* ------------------------------------------------------------- exercises */
 
@@ -250,7 +221,7 @@ function answerKey(rows, sentences) {
 /* ---------------------------------------------------------------- screen */
 
 async function buildSheet(rows, chosen) {
-  const sentences = chosen.has('gaps') ? await findSentences(rows.map((r) => r[0])) : new Map();
+  const sentences = chosen.has('gaps') ? await content.findSentences(rows.map((r) => r[0])) : new Map();
 
   const sections = [];
   if (chosen.has('translate')) sections.push(...translationDrill(rows));

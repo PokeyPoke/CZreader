@@ -9,7 +9,7 @@
  * activate, so a stale version can never linger.
  */
 
-const CACHE = 'czs-v3';
+const CACHE = 'czs-v4';
 
 const PRECACHE = [
   './',

@@ -1150,3 +1150,91 @@ a { color: var(--carmine); }
 .legend i[data-status='0'] { background: var(--new-bg); box-shadow: inset 0 -2px 0 var(--new-edge); }
 .legend i[data-status='1'] { background: var(--learn-bg); box-shadow: inset 0 -2px 0 var(--learn-edge); }
 .legend i[data-status='2'] { border: 1px solid var(--rule); }
+
+/* -------------------------------------------- learning-loop additions */
+
+/* Home: the daily strip under the masthead */
+.today {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  margin: -6px 0 18px;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+.today-streak {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--ink-3);
+}
+.today-streak[data-active='true'] { color: var(--brass); }
+.today-goal { flex-basis: 100%; color: var(--ink-2); }
+
+/* Reader: the end-of-story step */
+.finish {
+  margin: 34px 0 10px;
+  padding: 18px 16px;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--carmine);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+  font-family: var(--sans);
+}
+.finish-head {
+  margin: 0 0 6px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+.finish-body {
+  margin: 0 0 14px;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+/* Word panel: confirmation that a looked-up word was saved */
+.word-saved-note {
+  margin: 8px 0 0;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--ink-3);
+}
+
+/* Flashcards: the sentence the word was met in */
+.card-context {
+  max-width: 34rem;
+  margin: 0;
+  padding: 0 4px;
+}
+.card-context-cs {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.card-context-cs mark {
+  background: var(--learn-bg);
+  color: var(--ink);
+  box-shadow: inset 0 -2px 0 var(--learn-edge);
+  padding: 1px 2px;
+  border-radius: 2px;
+}
+.card-gap {
+  letter-spacing: 0.1em;
+  color: var(--carmine);
+  font-weight: 700;
+}
+.card-context-en {
+  margin: 6px 0 0;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+.answer-row--3 { grid-template-columns: 1fr 1.3fr 1fr; }

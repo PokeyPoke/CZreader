@@ -9,7 +9,9 @@
 import { el, icon, render } from './ui.js';
 import * as router from './router.js';
 import * as content from './content.js';
-import { allWords, getProgress, getSettings, dueWords, STATUS } from './store.js';
+import {
+  allWords, getProgress, getSettings, dueWords, streak, todayActivity, STATUS,
+} from './store.js';
 
 const LEVEL_KEY = 'czs.ui.level';
 
@@ -51,12 +53,40 @@ function storyCard(meta, comp, index) {
   ]);
 }
 
+/**
+ * A one-line daily summary. Small and steady beats occasional and heroic: the
+ * streak is there to make "a story and the due cards, every day" the habit.
+ */
+function todayStrip(days, today, due) {
+  const parts = [];
+  if (today.stories) parts.push(`${today.stories} stor${today.stories === 1 ? 'y' : 'ies'} read`);
+  if (today.reviews) parts.push(`${today.reviews} card${today.reviews === 1 ? '' : 's'} reviewed`);
+  if (today.lookups) parts.push(`${today.lookups} new word${today.lookups === 1 ? '' : 's'}`);
+
+  const goal = !today.stories
+    ? 'Today: finish a story'
+    : due
+      ? `Today: ${due} card${due === 1 ? '' : 's'} to review`
+      : 'Done for today';
+
+  return el('div.today', {}, [
+    el('span.today-streak', {
+      text: days ? `${days}-day streak` : 'Start a streak',
+      'data-active': days ? 'true' : 'false',
+    }),
+    el('span.today-detail', { text: parts.length ? parts.join(' · ') : goal }),
+    parts.length ? el('span.today-goal', { text: goal }) : null,
+  ]);
+}
+
 export async function homeScreen() {
   const comps = await content.allComprehension();
   const words = allWords();
   const savedCount = Object.values(words).filter((w) => w.status !== STATUS.KNOWN).length;
   const knownCount = Object.values(words).filter((w) => w.status === STATUS.KNOWN).length;
   const due = dueWords().length;
+  const days = streak();
+  const today = todayActivity();
 
   const list = el('div');
   const blurb = el('p.level-blurb');
@@ -91,6 +121,8 @@ export async function homeScreen() {
         el('p.kicker', { text: 'Read Czech' }),
         el('h1', { html: 'Čeština<em>.</em>' }),
       ]),
+
+      todayStrip(days, today, due),
 
       tabs,
       blurb,
